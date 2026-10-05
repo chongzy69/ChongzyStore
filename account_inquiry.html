@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Buy {{ account.title }} | ChongzyStore
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(14,165,233,.15),
+                    transparent 35%
+                ),
+                #020617;
+
+            color: white;
+
+            min-height: 100vh;
+        }
+
+
+        .navbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 6%;
+
+            background: rgba(2,6,23,.95);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+
+        .logo {
+
+            color: #38bdf8;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+
+        .logo span {
+            color: white;
+        }
+
+
+        .back {
+
+            color: #94a3b8;
+
+            text-decoration: none;
+        }
+
+
+        .container {
+
+            max-width: 900px;
+
+            margin: 50px auto;
+
+            padding: 20px;
+        }
+
+
+        .card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0f172a,
+                    #020617
+                );
+
+            border:
+                1px solid
+                rgba(56,189,248,.15);
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.45);
+        }
+
+
+        h1 {
+
+            margin-top: 0;
+
+            font-size: 34px;
+        }
+
+
+        .subtitle {
+
+            color: #94a3b8;
+
+            margin-bottom: 30px;
+        }
+
+
+        .account-summary {
+
+            display: flex;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+        }
+
+
+        .account-summary img {
+
+            width: 130px;
+
+            height: 100px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+        }
+
+
+        .summary-info h2 {
+
+            margin: 0 0 10px;
+        }
+
+
+        .price {
+
+            color: #38bdf8;
+
+            font-size: 22px;
+
+            font-weight: 900;
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #cbd5e1;
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+
+        input,
+        textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid
+                #334155;
+
+            background: #020617;
+
+            color: white;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        input:focus,
+        textarea:focus {
+
+            border-color: #38bdf8;
+        }
+
+
+        textarea {
+
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+
+        .error {
+
+            background:
+                rgba(239,68,68,.1);
+
+            border:
+                1px solid
+                rgba(239,68,68,.25);
+
+            color: #f87171;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+        }
+
+
+        button {
+
+            width: 100%;
+
+            padding: 17px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0284c7,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(37,99,235,.25);
+        }
+
+
+        .whatsapp {
+
+            display: block;
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background:
+                #16a34a;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 800;
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+
+                padding: 18px 20px;
+            }
+
+
+            .container {
+
+                margin-top: 20px;
+
+                padding: 12px;
+            }
+
+
+            .card {
+
+                padding: 22px;
+            }
+
+
+            h1 {
+
+                font-size: 27px;
+            }
+
+
+            .account-summary {
+
+                flex-direction: column;
+            }
+
+
+            .account-summary img {
+
+                width: 100%;
+
+                height: 200px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <a
+        href="{{ url_for('home') }}"
+        class="logo"
+    >
+        Chongzy<span>Store</span>
+    </a>
+
+
+    <a
+        href="{{ url_for('account_details', account_id=account.id) }}"
+        class="back"
+    >
+        ← Back
+    </a>
+
+</nav>
+
+
+<div class="container">
+
+
+    <div class="card">
+
+
+        <h1>
+            🛒 Request to Buy
+        </h1>
+
+
+        <p class="subtitle">
+
+            Enter your details below.
+            ChongzyStore will contact you to
+            complete the purchase.
+
+        </p>
+
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="account-summary">
+
+
+            {% if account.image %}
+
+            <img
+                src="{{ url_for(
+                    'static',
+                    filename='uploads/' + account.image
+                ) }}"
+                alt="{{ account.title }}"
+            >
+
+            {% endif %}
+
+
+            <div class="summary-info">
+
+                <h2>
+                    {{ account.title }}
+                </h2>
+
+                <div class="price">
+
+                    ₹{{ "%.2f"|format(account.price) }}
+
+                </div>
+
+                <div>
+
+                    ${{ "%.2f"|format(account.usd_price) }}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <form method="POST">
+
+
+            <label>
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                name="customer_name"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                name="customer_phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="customer_email"
+                placeholder="Enter your email"
+            >
+
+
+            <label>
+                Message
+            </label>
+
+            <textarea
+                name="message"
+                placeholder="Example: I am interested in buying this account."
+            ></textarea>
+
+
+            <button type="submit">
+
+                🛒 Submit Purchase Request
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="https://wa.me/919863060164"
+            target="_blank"
+            class="whatsapp"
+        >
+            💬 Contact ChongzyStore on WhatsApp
+        </a>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Payment Successful - ChongzyStore</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(0, 229, 255, 0.12),
+                    transparent 40%
+                ),
+                #050812;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            height: 70px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(10, 15, 28, 0.9);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+
+            color: #00e5ff;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav a {
+
+            color: #c8d0dc;
+
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #00e5ff;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+
+            flex: 1;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 50px 20px;
+        }
+
+
+        /* =========================
+           SUCCESS CARD
+        ========================= */
+
+        .success-card {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,0.45);
+
+            backdrop-filter: blur(20px);
+
+            animation:
+                cardIn 0.7s ease;
+        }
+
+
+        @keyframes cardIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px)
+                    scale(0.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================
+           SUCCESS ICON
+        ========================= */
+
+        .success-icon {
+
+            width: 100px;
+
+            height: 100px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 48px;
+
+            background:
+                rgba(0, 229, 255, 0.1);
+
+            border:
+                2px solid
+                rgba(0, 229, 255, 0.5);
+
+            box-shadow:
+                0 0 40px
+                rgba(0,229,255,0.2);
+
+            animation:
+                successPop 0.8s ease;
+        }
+
+
+        @keyframes successPop {
+
+            0% {
+
+                transform: scale(0);
+
+                opacity: 0;
+            }
+
+            70% {
+
+                transform: scale(1.15);
+            }
+
+            100% {
+
+                transform: scale(1);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        h1 {
+
+            margin: 0;
+
+            font-size: 36px;
+
+            font-weight: 900;
+        }
+
+        h1 span {
+            color: #00e5ff;
+        }
+
+        .subtitle {
+
+            margin-top: 12px;
+
+            color: #9ca8b7;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           ORDER INFO
+        ========================= */
+
+        .order-box {
+
+            margin-top: 30px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(0,0,0,0.2);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+        .order-number {
+
+            color: #00e5ff;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+        .row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #7f8b99;
+        }
+
+        .value {
+
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+
+        /* =========================
+           VERIFIED
+        ========================= */
+
+        .verified {
+
+            margin-top: 25px;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            color: #72e89d;
+
+            background:
+                rgba(30, 180, 90, 0.08);
+
+            border:
+                1px solid
+                rgba(60,200,120,0.2);
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+        .btn {
+
+            flex: 1;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition: 0.3s;
+        }
+
+        .primary {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #0077ff
+                );
+
+            color: white;
+        }
+
+        .secondary {
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            color: #d7dee7;
+        }
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #56616c;
+
+            font-size: 12px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 0 5%;
+            }
+
+            .nav a {
+
+                margin-left: 10px;
+
+                font-size: 12px;
+            }
+
+            .success-card {
+
+                padding: 28px 20px;
+            }
+
+            h1 {
+
+                font-size: 28px;
+            }
+
+            .row {
+
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+            .value {
+
+                text-align: left;
+            }
+
+            .buttons {
+
+                flex-direction: column;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a
+        href="{{ url_for('home') }}"
+        class="logo"
+    >
+        Chongzy<span>Store</span>
+    </a>
+
+
+    <div class="nav">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('customer_dashboard') }}">
+            My Orders
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+    <div class="success-card">
+
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+
+            ✓
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1>
+
+            Payment
+            <span>Successful!</span>
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            Your payment has been received successfully.
+            Your MLBB diamond recharge order has been
+            recorded.
+
+        </p>
+
+
+
+        <!-- ORDER INFORMATION -->
+
+        <div class="order-box">
+
+
+            <div class="order-number">
+
+                Order
+                {% if order %}
+                    {{ order.order_number }}
+                {% endif %}
+
+            </div>
+
+
+            {% if order %}
+
+
+            <div class="row">
+
+                <span class="label">
+                    Region
+                </span>
+
+                <span class="value">
+                    {{ order.region_name }}
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Diamonds
+                </span>
+
+                <span class="value">
+
+                    💎 {{ order.diamonds }}
+
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    MLBB User ID
+                </span>
+
+                <span class="value">
+
+                    {{ order.mlbb_user_id }}
+
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Zone ID
+                </span>
+
+                <span class="value">
+
+                    {{ order.zone_id }}
+
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Amount
+                </span>
+
+                <span class="value">
+
+                    ₹{{ "%.2f"|format(order.price) }}
+
+                </span>
+
+            </div>
+
+
+            {% if order.razorpay_payment_id %}
+
+            <div class="row">
+
+                <span class="label">
+                    Payment ID
+                </span>
+
+                <span class="value">
+
+                    {{ order.razorpay_payment_id }}
+
+                </span>
+
+            </div>
+
+            {% endif %}
+
+
+            {% endif %}
+
+        </div>
+
+
+
+        <!-- VERIFIED -->
+
+        <div class="verified">
+
+            ✓ Payment Verified Successfully
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+            <a
+                href="{{ url_for('customer_dashboard') }}"
+                class="btn primary"
+            >
+
+                View My Orders
+
+            </a>
+
+
+            <a
+                href="{{ url_for('home') }}"
+                class="btn secondary"
+            >
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<footer>
+
+    © 2026 ChongzyStore.
+    All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>

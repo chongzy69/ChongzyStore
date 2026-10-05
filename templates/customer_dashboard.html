@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        My Account - ChongzyStore
+    </title>
+
+    <style>
+
+        /* =====================================================
+           CHONGZYSTORE CUSTOMER DASHBOARD
+           PREMIUM + MOBILE RESPONSIVE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(0,229,255,0.09),
+                    transparent 35%
+                ),
+                #050814;
+
+            color: white;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            min-height: 70px;
+
+            padding: 0 6%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(5,8,20,0.96);
+
+            border-bottom:
+                1px solid
+                rgba(0,229,255,0.15);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            backdrop-filter: blur(18px);
+        }
+
+
+        .logo {
+            color: #00e5ff;
+
+            font-size: 24px;
+
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .nav-links a {
+            color: #dbeafe;
+
+            text-decoration: none;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.25s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #00e5ff;
+
+            background:
+                rgba(0,229,255,0.08);
+        }
+
+
+        .nav-button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #008cff
+                );
+
+            color: #001016 !important;
+
+            font-weight: 800 !important;
+        }
+
+
+        .logout {
+            color: #f87171 !important;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            width: 44px;
+
+            height: 44px;
+
+            border:
+                1px solid
+                rgba(0,229,255,0.30);
+
+            border-radius: 10px;
+
+            background:
+                rgba(0,229,255,0.08);
+
+            color: #00e5ff;
+
+            font-size: 23px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+            width: 92%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding:
+                55px 0 90px;
+        }
+
+
+        /* =====================================================
+           WELCOME
+        ===================================================== */
+
+        .welcome {
+            margin-bottom: 35px;
+        }
+
+
+        .welcome h1 {
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    46px
+                );
+
+            margin-bottom: 10px;
+
+            font-weight: 900;
+        }
+
+
+        .welcome h1 span {
+            color: #00e5ff;
+        }
+
+
+        .welcome p {
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           PROFILE CARD
+        ===================================================== */
+
+        .profile {
+            display: grid;
+
+            grid-template-columns:
+                auto 1fr auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,23,42,0.97),
+                    rgba(5,10,25,0.97)
+                );
+
+            border:
+                1px solid
+                rgba(56,189,248,0.14);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.30);
+        }
+
+
+        .avatar {
+            width: 65px;
+
+            height: 65px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #008cff
+                );
+
+            color: #001016;
+
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+
+        .profile-info h2 {
+            font-size: 20px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .profile-info p {
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .profile-contact {
+            text-align: right;
+        }
+
+
+        .profile-contact div {
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .profile-contact span {
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .stat-card {
+            padding: 23px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,23,42,0.97),
+                    rgba(5,10,25,0.97)
+                );
+
+            border:
+                1px solid
+                rgba(56,189,248,0.12);
+
+            transition: 0.25s ease;
+        }
+
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(0,229,255,0.35);
+        }
+
+
+        .stat-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+
+        .stat-label {
+            color: #64748b;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .stat-icon {
+            font-size: 23px;
+        }
+
+
+        .stat-number {
+            color: #38bdf8;
+
+            font-size: 30px;
+
+            font-weight: 900;
+        }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .section-header h2 {
+            font-size: 24px;
+        }
+
+
+        .section-header p {
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           ORDERS CARD
+        ===================================================== */
+
+        .orders-card {
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,23,42,0.97),
+                    rgba(5,10,25,0.97)
+                );
+
+            border:
+                1px solid
+                rgba(56,189,248,0.14);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.30);
+        }
+
+
+        /* =====================================================
+           DESKTOP TABLE
+        ===================================================== */
+
+        .table-wrapper {
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 800px;
+        }
+
+
+        th {
+            text-align: left;
+
+            padding: 14px 12px;
+
+            color: #64748b;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        td {
+            padding: 17px 12px;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.05);
+        }
+
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        .order-number {
+            color: #38bdf8;
+
+            font-weight: 800;
+        }
+
+
+        .diamonds {
+            color: #38bdf8;
+
+            font-weight: 800;
+        }
+
+
+        .amount {
+            color: #e2e8f0;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+            display: inline-flex;
+
+            padding: 6px 10px;
+
+            border-radius: 50px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+
+        .status-pending {
+            color: #fbbf24;
+
+            background:
+                rgba(245,158,11,0.10);
+
+            border:
+                1px solid
+                rgba(245,158,11,0.22);
+        }
+
+
+        .status-paid,
+        .status-processing {
+            color: #38bdf8;
+
+            background:
+                rgba(14,165,233,0.10);
+
+            border:
+                1px solid
+                rgba(14,165,233,0.22);
+        }
+
+
+        .status-completed {
+            color: #4ade80;
+
+            background:
+                rgba(34,197,94,0.10);
+
+            border:
+                1px solid
+                rgba(34,197,94,0.22);
+        }
+
+
+        .status-cancelled {
+            color: #f87171;
+
+            background:
+                rgba(239,68,68,0.10);
+
+            border:
+                1px solid
+                rgba(239,68,68,0.22);
+        }
+
+
+        /* =====================================================
+           VIEW BUTTON
+        ===================================================== */
+
+        .view-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 8px 13px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(0,229,255,0.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,0.18);
+
+            color: #38bdf8;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+
+        .view-button:hover {
+            background:
+                rgba(0,229,255,0.15);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           EMPTY ORDERS
+        ===================================================== */
+
+        .empty {
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+
+        .empty-icon {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .empty h3 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .empty p {
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 22px;
+        }
+
+
+        .recharge-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 13px 20px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #008cff
+                );
+
+            color: #001016;
+
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           FOOTER LINKS
+        ===================================================== */
+
+        .bottom-actions {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+
+        .bottom-action {
+            padding: 11px 18px;
+
+            border-radius: 10px;
+
+            color: #cbd5e1;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            border:
+                1px solid #334155;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+
+        .bottom-action:hover {
+            color: #00e5ff;
+
+            border-color:
+                rgba(0,229,255,0.30);
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .profile {
+                grid-template-columns:
+                    auto 1fr;
+            }
+
+            .profile-contact {
+                grid-column:
+                    1 / -1;
+
+                text-align: left;
+
+                padding-top: 12px;
+
+                border-top:
+                    1px solid
+                    rgba(255,255,255,0.06);
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                min-height: 70px;
+
+                padding: 12px 18px;
+
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                width: 100%;
+
+                flex-direction: column;
+
+                gap: 4px;
+
+                padding-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+
+                text-align: center;
+
+                padding: 12px;
+            }
+
+            .page {
+                width: 92%;
+
+                padding-top: 40px;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .avatar {
+                margin: auto;
+            }
+
+            .profile-contact {
+                text-align: center;
+
+                grid-column: auto;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .orders-card {
+                padding: 18px 12px;
+
+                border-radius: 17px;
+            }
+
+            .section-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL PHONE
+        ===================================================== */
+
+        @media (max-width: 420px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .welcome h1 {
+                font-size: 30px;
+            }
+
+            .profile {
+                padding: 20px;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 27px;
+            }
+
+            .empty {
+                padding:
+                    45px 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ChongzyStore
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <div
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/#recharge">
+                Recharge
+            </a>
+
+            <a href="/#accounts">
+                Accounts
+            </a>
+
+            <a href="/#contact">
+                Contact
+            </a>
+
+            <a
+                href="/account"
+                class="nav-button"
+            >
+                My Account
+            </a>
+
+            <a
+                href="/logout"
+                class="logout"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN PAGE
+    ===================================================== -->
+
+    <main class="page">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h1>
+                Welcome,
+                <span>{{ user.name }}</span> 👋
+            </h1>
+
+            <p>
+                Manage your ChongzyStore account and view your
+                MLBB diamond recharge orders.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================= -->
+
+        <div class="profile">
+
+
+            <div class="avatar">
+
+                {{ user.name[0]|upper }}
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <h2>
+                    {{ user.name }}
+                </h2>
+
+                <p>
+                    ChongzyStore Customer
+                </p>
+
+            </div>
+
+
+            <div class="profile-contact">
+
+                {% if user.email %}
+
+                    <div>
+                        <span>Email:</span>
+                        {{ user.email }}
+                    </div>
+
+                {% endif %}
+
+
+                {% if user.phone %}
+
+                    <div>
+                        <span>Phone:</span>
+                        {{ user.phone }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================= -->
+
+        {% set total_orders = orders|length %}
+
+        {% set paid_orders = 0 %}
+
+        {% set total_diamonds = 0 %}
+
+
+        {% for order in orders %}
+
+            {% if order.status == "Paid"
+               or order.status == "Processing"
+               or order.status == "Completed" %}
+
+                {% set paid_orders = paid_orders + 1 %}
+
+            {% endif %}
+
+            {% set total_diamonds =
+                total_diamonds + order.diamonds
+            %}
+
+        {% endfor %}
+
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-label">
+                        Total Orders
+                    </div>
+
+                    <div class="stat-icon">
+                        📦
+                    </div>
+
+                </div>
+
+                <div class="stat-number">
+                    {{ total_orders }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-label">
+                        Paid Orders
+                    </div>
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+                <div class="stat-number">
+                    {{ paid_orders }}
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-label">
+                        Diamonds Ordered
+                    </div>
+
+                    <div class="stat-icon">
+                        💎
+                    </div>
+
+                </div>
+
+                <div class="stat-number">
+                    {{ total_diamonds }}
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             ORDER HISTORY
+        ================================================= -->
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    📋 Order History
+                </h2>
+
+                <p>
+                    Your latest MLBB recharge orders
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="orders-card">
+
+
+            {% if orders %}
+
+
+                <div class="table-wrapper">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Order
+                                </th>
+
+                                <th>
+                                    Region
+                                </th>
+
+                                <th>
+                                    Diamonds
+                                </th>
+
+                                <th>
+                                    User ID
+                                </th>
+
+                                <th>
+                                    Zone ID
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            {% for order in orders %}
+
+                                <tr>
+
+
+                                    <td>
+
+                                        <span class="order-number">
+                                            {{ order.order_number }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        {{ order.region_name }}
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="diamonds">
+                                            💎 {{ order.diamonds }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        {{ order.mlbb_user_id }}
+                                    </td>
+
+
+                                    <td>
+                                        {{ order.zone_id }}
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="amount">
+                                            ₹{{ "%.2f"|format(order.price) }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+
+                                        {% if order.status == "Pending" %}
+
+                                            <span class="status status-pending">
+                                                Pending
+                                            </span>
+
+
+                                        {% elif order.status == "Paid" %}
+
+                                            <span class="status status-paid">
+                                                Paid
+                                            </span>
+
+
+                                        {% elif order.status == "Processing" %}
+
+                                            <span class="status status-processing">
+                                                Processing
+                                            </span>
+
+
+                                        {% elif order.status == "Completed" %}
+
+                                            <span class="status status-completed">
+                                                Completed
+                                            </span>
+
+
+                                        {% elif order.status == "Cancelled" %}
+
+                                            <span class="status status-cancelled">
+                                                Cancelled
+                                            </span>
+
+
+                                        {% else %}
+
+                                            <span class="status status-pending">
+                                                {{ order.status }}
+                                            </span>
+
+                                        {% endif %}
+
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <a
+                                            href="{{ url_for(
+                                                'order_details',
+                                                order_id=order.id
+                                            ) }}"
+                                            class="view-button"
+                                        >
+                                            View Order
+                                        </a>
+
+                                    </td>
+
+
+                                </tr>
+
+                            {% endfor %}
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            {% else %}
+
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        No Orders Yet
+                    </h3>
+
+                    <p>
+                        You haven't placed any MLBB diamond
+                        recharge orders yet.
+                    </p>
+
+                    <a
+                        href="/"
+                        class="recharge-button"
+                    >
+                        💎 Start Recharge
+                    </a>
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+        <!-- =================================================
+             BOTTOM ACTIONS
+        ================================================= -->
+
+        <div class="bottom-actions">
+
+            <a
+                href="/"
+                class="bottom-action"
+            >
+                🏠 Home
+            </a>
+
+            <a
+                href="/#recharge"
+                class="bottom-action"
+            >
+                💎 Recharge Diamonds
+            </a>
+
+            <a
+                href="/#accounts"
+                class="bottom-action"
+            >
+                🎮 View Accounts
+            </a>
+
+            <a
+                href="/logout"
+                class="bottom-action"
+            >
+                🚪 Logout
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         MOBILE MENU
+    ===================================================== -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu =
+                document.getElementById(
+                    "navLinks"
+                );
+
+            menu.classList.toggle(
+                "active"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

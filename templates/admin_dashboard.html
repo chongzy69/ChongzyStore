@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard - ChongzyStore</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050814;
+    color:#fff;
+    min-height:100vh;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    min-height:70px;
+    padding:12px 5%;
+    background:rgba(5,8,20,.97);
+    border-bottom:1px solid #1e293b;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    color:#00e5ff;
+    font-size:24px;
+    font-weight:900;
+}
+
+.admin-label{
+    color:#94a3b8;
+    font-size:12px;
+    margin-left:8px;
+}
+
+.nav-actions{
+    display:flex;
+    gap:10px;
+}
+
+.nav-actions a{
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:8px;
+    color:#cbd5e1;
+    background:#111827;
+    border:1px solid #334155;
+    font-size:12px;
+    font-weight:700;
+}
+
+.nav-actions a:hover{
+    color:#00e5ff;
+    border-color:#00e5ff;
+}
+
+.logout{
+    color:#f87171!important;
+}
+
+.menu{
+    display:none;
+    background:#111827;
+    color:#00e5ff;
+    border:1px solid #334155;
+    border-radius:8px;
+    padding:9px 12px;
+    font-size:20px;
+}
+
+.container{
+    width:92%;
+    max-width:1400px;
+    margin:auto;
+    padding:40px 0 80px;
+}
+
+.hero{
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-size:clamp(30px,5vw,46px);
+    margin-bottom:8px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.hero p{
+    color:#64748b;
+    font-size:14px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.stat{
+    padding:22px;
+    border-radius:16px;
+    background:linear-gradient(145deg,#0f172a,#070b16);
+    border:1px solid #1e293b;
+}
+
+.stat small{
+    color:#64748b;
+    font-size:10px;
+    text-transform:uppercase;
+}
+
+.stat h2{
+    color:#38bdf8;
+    font-size:30px;
+    margin-top:10px;
+}
+
+.section{
+    background:linear-gradient(145deg,#0f172a,#070b16);
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:24px;
+    margin-bottom:25px;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    font-size:21px;
+}
+
+.section-title p{
+    color:#64748b;
+    font-size:12px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #334155;
+    background:#080d19;
+    color:#fff;
+    outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:#00e5ff;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.btn{
+    border:none;
+    padding:12px 17px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+    color:#001016;
+    background:linear-gradient(135deg,#00e5ff,#008cff);
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.danger-btn{
+    color:#f87171;
+    background:#251015;
+    border:1px solid #7f1d1d;
+}
+
+.table-wrap{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:850px;
+    border-collapse:collapse;
+}
+
+th{
+    color:#64748b;
+    font-size:10px;
+    text-transform:uppercase;
+    text-align:left;
+    padding:12px;
+    border-bottom:1px solid #334155;
+}
+
+td{
+    padding:14px 12px;
+    border-bottom:1px solid #172033;
+    color:#cbd5e1;
+    font-size:12px;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+.id{
+    color:#38bdf8;
+    font-weight:800;
+}
+
+.price{
+    color:#4ade80;
+    font-weight:800;
+}
+
+.actions{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.actions a{
+    text-decoration:none;
+    padding:7px 9px;
+    border-radius:6px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.edit{
+    color:#38bdf8;
+    background:#082331;
+}
+
+.sold{
+    color:#fbbf24;
+    background:#251d08;
+}
+
+.restore{
+    color:#4ade80;
+    background:#092516;
+}
+
+.delete{
+    color:#f87171;
+    background:#2a1014;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:30px;
+    font-size:9px;
+    font-weight:900;
+}
+
+.available{
+    color:#4ade80;
+    background:#092516;
+}
+
+.sold-status{
+    color:#f87171;
+    background:#2a1014;
+}
+
+.status-select{
+    width:auto;
+    min-width:125px;
+    padding:7px;
+    font-size:10px;
+}
+
+.order-form{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.account-preview{
+    width:48px;
+    height:48px;
+    border-radius:8px;
+    object-fit:cover;
+    background:#111827;
+    border:1px solid #334155;
+}
+
+.empty{
+    padding:30px;
+    text-align:center;
+    color:#64748b;
+}
+
+.footer{
+    text-align:center;
+    color:#475569;
+    font-size:11px;
+    padding:20px;
+}
+
+
+/* TABLET */
+
+@media(max-width:1000px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:12px 18px;
+        flex-wrap:wrap;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-actions{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        padding-top:10px;
+    }
+
+    .nav-actions.active{
+        display:flex;
+    }
+
+    .nav-actions a{
+        text-align:center;
+    }
+
+    .container{
+        width:94%;
+        padding-top:30px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .section{
+        padding:17px;
+    }
+
+    .section-title{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+}
+
+
+/* SMALL PHONE */
+
+@media(max-width:430px){
+
+    .logo{
+        font-size:20px;
+    }
+
+    .admin-label{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .section-title h2{
+        font-size:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div>
+        <span class="logo">ChongzyStore</span>
+        <span class="admin-label">ADMIN PANEL</span>
+    </div>
+
+    <button
+        class="menu"
+        onclick="toggleMenu()"
+        type="button">
+        ☰
+    </button>
+
+    <div
+        class="nav-actions"
+        id="navActions">
+
+        <a href="/">
+            🏠 Store
+        </a>
+
+        <a href="/admin/logout" class="logout">
+            🚪 Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- HEADER -->
+
+<div class="hero">
+
+    <h1>
+        Admin <span>Dashboard</span>
+    </h1>
+
+    <p>
+        Manage your ChongzyStore diamonds, accounts,
+        orders and customers.
+    </p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <small>Regions</small>
+
+        <h2>
+            {{ regions|length }}
+        </h2>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>Diamond Packages</small>
+
+        <h2>
+            {{ packages|length }}
+        </h2>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>Accounts</small>
+
+        <h2>
+            {{ accounts|length }}
+        </h2>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>Customers</small>
+
+        <h2>
+            {{ users|length }}
+        </h2>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     REGIONS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>🌍 Recharge Regions</h2>
+
+            <p>
+                Add or remove supported MLBB regions.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        action="{{ url_for('add_region') }}"
+        method="POST">
+
+        <div class="form-grid">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Region Name"
+                required>
+
+            <input
+                type="text"
+                name="code"
+                placeholder="Region Code"
+                required>
+
+            <button
+                type="submit"
+                class="btn">
+                + Add Region
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <br>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Region</th>
+                    <th>Code</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for region in regions %}
+
+                <tr>
+
+                    <td class="id">
+                        #{{ region.id }}
+                    </td>
+
+                    <td>
+                        {{ region.name }}
+                    </td>
+
+                    <td>
+                        {{ region.code }}
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="actions delete"
+                            href="{{ url_for('delete_region', region_id=region.id) }}"
+                            onclick="return confirm('Delete this region?');">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="4" class="empty">
+                        No regions added yet.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DIAMOND PACKAGES
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>💎 Diamond Packages</h2>
+
+            <p>
+                Change your recharge packages and prices.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        action="{{ url_for('add_region_package') }}"
+        method="POST">
+
+        <div class="form-grid">
+
+            <select
+                name="region_id"
+                required>
+
+                <option value="">
+                    Select Region
+                </option>
+
+                {% for region in regions %}
+
+                <option value="{{ region.id }}">
+                    {{ region.name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <input
+                type="number"
+                name="diamonds"
+                placeholder="Diamonds"
+                min="1"
+                required>
+
+
+            <input
+                type="number"
+                name="price"
+                placeholder="Price ₹"
+                step="0.01"
+                min="0"
+                required>
+
+
+            <button
+                type="submit"
+                class="btn">
+                + Add Package
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <br>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Region</th>
+                    <th>Diamonds</th>
+                    <th>Price</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for package in packages %}
+
+                <tr>
+
+                    <td class="id">
+                        #{{ package.id }}
+                    </td>
+
+                    <td>
+                        {{ package.region.name }}
+                    </td>
+
+                    <td>
+                        💎 {{ package.diamonds }}
+                    </td>
+
+                    <td class="price">
+                        ₹{{ "%.2f"|format(package.price) }}
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="actions delete"
+                            href="{{ url_for('delete_region_package', package_id=package.id) }}"
+                            onclick="return confirm('Delete this package?');">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5" class="empty">
+                        No packages added yet.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADD ACCOUNT
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>🎮 Add MLBB Account</h2>
+
+            <p>
+                Post an account for sale.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        action="{{ url_for('add_account') }}"
+        method="POST"
+        enctype="multipart/form-data">
+
+        <div class="form-grid">
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Account Title"
+                required>
+
+
+            <input
+                type="number"
+                name="price"
+                placeholder="Price ₹"
+                step="0.01"
+                required>
+
+
+            <input
+                type="number"
+                name="usd_price"
+                placeholder="Display Price USD"
+                step="0.01">
+
+
+            <input
+                type="text"
+                name="rank"
+                placeholder="Rank">
+
+
+            <input
+                type="text"
+                name="level"
+                placeholder="Level">
+
+
+            <input
+                type="text"
+                name="skins"
+                placeholder="Skins">
+
+
+            <input
+                type="text"
+                name="heroes"
+                placeholder="Heroes">
+
+
+            <input
+                type="file"
+                name="image"
+                accept="image/*">
+
+
+            <textarea
+                name="description"
+                class="full"
+                placeholder="Account Description"></textarea>
+
+
+            <button
+                type="submit"
+                class="btn">
+                + Post Account
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+
+<!-- =====================================================
+     ACCOUNT LIST
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>🎮 Account Listings</h2>
+
+            <p>
+                Edit, sell, restore or delete your accounts.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Image</th>
+                    <th>Account</th>
+                    <th>Rank</th>
+                    <th>Level</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for account in accounts %}
+
+                <tr>
+
+                    <td>
+
+                        {% if account.image %}
+
+                        <img
+                            src="{{ url_for('static', filename='uploads/' + account.image) }}"
+                            class="account-preview">
+
+                        {% else %}
+
+                        <div class="account-preview">
+                            🎮
+                        </div>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            {{ account.title }}
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+                        {{ account.rank }}
+                    </td>
+
+
+                    <td>
+                        {{ account.level }}
+                    </td>
+
+
+                    <td class="price">
+
+                        ₹{{ "%.2f"|format(account.price) }}
+
+                        {% if account.usd_price %}
+                        <br>
+                        <small>
+                            ${{ "%.2f"|format(account.usd_price) }}
+                        </small>
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        {% if account.status == "Available" %}
+
+                        <span class="status available">
+                            Available
+                        </span>
+
+                        {% else %}
+
+                        <span class="status sold-status">
+                            Sold
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="actions">
+
+                            <a
+                                href="{{ url_for('edit_account', account_id=account.id) }}"
+                                class="edit">
+                                ✏️ Edit
+                            </a>
+
+
+                            {% if account.status == "Available" %}
+
+                            <a
+                                href="{{ url_for('mark_sold', account_id=account.id) }}"
+                                class="sold"
+                                onclick="return confirm('Mark this account as SOLD?');">
+                                🔒 Sold
+                            </a>
+
+                            {% else %}
+
+                            <a
+                                href="{{ url_for('restore_account', account_id=account.id) }}"
+                                class="restore"
+                                onclick="return confirm('Restore this account?');">
+                                🔓 Restore
+                            </a>
+
+                            {% endif %}
+
+
+                            <a
+                                href="{{ url_for('delete_account', account_id=account.id) }}"
+                                class="delete"
+                                onclick="return confirm('PERMANENTLY DELETE this account?');">
+                                🗑️ Delete
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        class="empty">
+
+                        No accounts posted yet.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ORDERS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>📦 Customer Orders</h2>
+
+            <p>
+                View payments and update order status.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Region</th>
+                    <th>Diamonds</th>
+                    <th>User ID</th>
+                    <th>Zone ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for order in orders %}
+
+                <tr>
+
+                    <td class="id">
+                        {{ order.order_number }}
+                    </td>
+
+
+                    <td>
+
+                        {% if order.user %}
+                            {{ order.user.name }}
+                        {% else %}
+                            Customer
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ order.region_name }}
+                    </td>
+
+
+                    <td>
+                        💎 {{ order.diamonds }}
+                    </td>
+
+
+                    <td>
+                        {{ order.mlbb_user_id }}
+                    </td>
+
+
+                    <td>
+                        {{ order.zone_id }}
+                    </td>
+
+
+                    <td class="price">
+                        ₹{{ "%.2f"|format(order.price) }}
+                    </td>
+
+
+                    <td>
+
+                        <form
+                            action="{{ url_for('change_order_status', order_id=order.id) }}"
+                            method="POST"
+                            class="order-form">
+
+                            <select
+                                name="status"
+                                class="status-select">
+
+                                <option
+                                    value="Pending"
+                                    {% if order.status == "Pending" %}selected{% endif %}>
+                                    Pending
+                                </option>
+
+                                <option
+                                    value="Paid"
+                                    {% if order.status == "Paid" %}selected{% endif %}>
+                                    Paid
+                                </option>
+
+                                <option
+                                    value="Processing"
+                                    {% if order.status == "Processing" %}selected{% endif %}>
+                                    Processing
+                                </option>
+
+                                <option
+                                    value="Completed"
+                                    {% if order.status == "Completed" %}selected{% endif %}>
+                                    Completed
+                                </option>
+
+                                <option
+                                    value="Cancelled"
+                                    {% if order.status == "Cancelled" %}selected{% endif %}>
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                type="submit"
+                                class="btn">
+                                Save
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="8"
+                        class="empty">
+
+                        No orders yet.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CUSTOMERS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>👥 Customers</h2>
+
+            <p>
+                Registered ChongzyStore customers.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Registered</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for user in users %}
+
+                <tr>
+
+                    <td class="id">
+                        #{{ user.id }}
+                    </td>
+
+                    <td>
+                        {{ user.name }}
+                    </td>
+
+                    <td>
+                        {{ user.email or "—" }}
+                    </td>
+
+                    <td>
+                        {{ user.phone or "—" }}
+                    </td>
+
+                    <td>
+                        {{ user.created_at }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="empty">
+
+                        No customers registered yet.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    ChongzyStore Admin Panel © 2026
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+    const menu =
+        document.getElementById("navActions");
+
+    menu.classList.toggle("active");
+
+}
+
+</script>
+
+
+</body>
+</html>

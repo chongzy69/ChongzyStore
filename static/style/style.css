@@ -1,0 +1,462 @@
+/* =========================================================
+   CHONGZYSTORE - GLOBAL PREMIUM STYLE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050810;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   GLOBAL NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 70px;
+
+    padding: 15px 5%;
+
+    background: rgba(5, 8, 16, 0.90);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navbar a {
+    color: #ffffff;
+}
+
+.logo,
+.brand-logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.logo span,
+.brand-logo span {
+    color: #2f9cff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    position: relative;
+    color: #aeb9cc;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #2998ff;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   GLOBAL BUTTONS
+   ========================================================= */
+
+.btn,
+button,
+.primary-btn,
+.buy-btn,
+.login-btn {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.btn:hover,
+.primary-btn:hover,
+.buy-btn:hover,
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active,
+.primary-btn:active,
+.buy-btn:active,
+.login-btn:active {
+    transform: translateY(0);
+}
+
+
+/* PRIMARY BUTTON */
+
+.btn-primary,
+.primary-btn,
+.buy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+    padding: 0 22px;
+
+    border: none;
+    border-radius: 11px;
+
+    color: #ffffff;
+    font-weight: 800;
+
+    background: linear-gradient(
+        135deg,
+        #087fff,
+        #6535ff
+    );
+
+    box-shadow:
+        0 10px 28px rgba(25, 113, 255, 0.20);
+
+    cursor: pointer;
+}
+
+.btn-primary:hover,
+.primary-btn:hover,
+.buy-btn:hover {
+    box-shadow:
+        0 15px 35px rgba(25, 113, 255, 0.35);
+}
+
+
+/* SECONDARY BUTTON */
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+    padding: 0 20px;
+
+    border-radius: 11px;
+    border: 1px solid #293348;
+
+    color: #d9e3f2;
+    background: #0d1320;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    border-color: #398fff;
+    color: #ffffff;
+}
+
+
+/* DANGER BUTTON */
+
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 0 18px;
+
+    border: 1px solid rgba(255, 70, 70, 0.25);
+    border-radius: 10px;
+
+    color: #ff9999;
+    background: rgba(255, 50, 50, 0.08);
+
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: rgba(255, 50, 50, 0.15);
+}
+
+
+/* =========================================================
+   GLOBAL CARDS
+   ========================================================= */
+
+.card {
+    background: rgba(13, 18, 31, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(60, 153, 255, 0.25);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   GLOBAL INPUTS
+   ========================================================= */
+
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 28px;
+    padding: 4px 11px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.status-paid,
+.status-completed,
+.status-available {
+    color: #69e6a3;
+    background: rgba(48, 200, 120, 0.10);
+    border: 1px solid rgba(48, 200, 120, 0.18);
+}
+
+.status-pending,
+.status-processing {
+    color: #ffd36b;
+    background: rgba(255, 190, 60, 0.10);
+    border: 1px solid rgba(255, 190, 60, 0.18);
+}
+
+.status-cancelled,
+.status-sold {
+    color: #ff8b8b;
+    background: rgba(255, 70, 70, 0.10);
+    border: 1px solid rgba(255, 70, 70, 0.18);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+    padding: 70px 0;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.section-title p {
+    margin-top: 8px;
+    color: #7e8ba0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    margin-top: 60px;
+    padding: 35px 5%;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    background: #03060c;
+
+    text-align: center;
+
+    color: #66738a;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050810;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1c2b43;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #287fc7;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 13px 20px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 45px 0;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .btn-primary,
+    .primary-btn,
+    .buy-btn,
+    .btn-secondary {
+        min-height: 48px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .navbar {
+        min-height: 62px;
+        padding: 12px 15px;
+    }
+
+    .logo,
+    .brand-logo {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 9px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .section {
+        padding: 35px 0;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 28px 15px;
+    }
+}

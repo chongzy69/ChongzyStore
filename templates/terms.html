@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Terms & Conditions - ChongzyStore</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}?v=3">
+
+    <style>
+        .legal-page {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at top right, rgba(37,99,235,.16), transparent 35%),
+                #070b14;
+        }
+
+        .legal-container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .legal-card {
+            background: rgba(15,23,42,.92);
+            border: 1px solid rgba(148,163,184,.15);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.35);
+        }
+
+        .legal-card h1 {
+            color: white;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .legal-card .updated {
+            color: #94a3b8;
+            margin-bottom: 35px;
+        }
+
+        .legal-card h2 {
+            color: #60a5fa;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .legal-card p,
+        .legal-card li {
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .legal-card ul {
+            padding-left: 22px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-button:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 650px) {
+            .legal-page {
+                padding: 95px 14px 40px;
+            }
+
+            .legal-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            .legal-card h1 {
+                font-size: 30px;
+            }
+
+            .legal-card h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        ChongzyStore
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                My Account
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('register') }}"
+               class="nav-button">
+                Register
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+<section class="legal-page">
+
+    <div class="legal-container">
+
+        <div class="legal-card">
+
+            <h1>Terms & Conditions</h1>
+
+            <p class="updated">
+                Last updated: 2026
+            </p>
+
+
+            <p>
+                Welcome to <strong>ChongzyStore</strong>.
+                By accessing or using this website, you agree to
+                follow these Terms & Conditions. Please read them
+                carefully before using our services.
+            </p>
+
+
+            <h2>1. About ChongzyStore</h2>
+
+            <p>
+                ChongzyStore provides online services related to
+                Mobile Legends: Bang Bang (MLBB), including diamond
+                recharge services and selected MLBB account listings.
+            </p>
+
+
+            <h2>2. User Registration</h2>
+
+            <p>
+                Customers may create an account to access features
+                such as diamond recharge, order tracking and order
+                history.
+            </p>
+
+            <ul>
+                <li>You must provide accurate information.</li>
+                <li>You are responsible for keeping your login credentials secure.</li>
+                <li>You must not use another person's account without permission.</li>
+                <li>ChongzyStore may restrict accounts involved in fraudulent or abusive activity.</li>
+            </ul>
+
+
+            <h2>3. Diamond Recharge</h2>
+
+            <p>
+                Customers must provide the correct MLBB User ID and
+                Zone ID when placing a recharge order.
+            </p>
+
+            <p>
+                ChongzyStore is not responsible for problems caused
+                by incorrect information entered by the customer.
+            </p>
+
+
+            <h2>4. Payments</h2>
+
+            <p>
+                Payments for applicable orders are processed through
+                the available payment gateway shown during checkout.
+            </p>
+
+            <p>
+                An order may remain pending until the payment has
+                been successfully completed and verified.
+            </p>
+
+
+            <h2>5. MLBB Accounts</h2>
+
+            <p>
+                MLBB accounts displayed on ChongzyStore are listings
+                provided for purchase consideration.
+            </p>
+
+            <ul>
+                <li>Account availability may change at any time.</li>
+                <li>An account marked as SOLD is no longer available.</li>
+                <li>Customers should review the displayed account information before contacting the store.</li>
+                <li>Account purchases are handled through direct communication with ChongzyStore.</li>
+            </ul>
+
+
+            <h2>6. Account Purchase Communication</h2>
+
+            <p>
+                Account purchase inquiries may be handled through
+                WhatsApp or another communication method provided
+                by ChongzyStore.
+            </p>
+
+            <p>
+                Customers should verify all account details,
+                pricing and transaction information before completing
+                a purchase.
+            </p>
+
+
+            <h2>7. Prohibited Activities</h2>
+
+            <p>
+                Customers must not use ChongzyStore for fraudulent,
+                abusive, illegal or unauthorized activities.
+            </p>
+
+            <ul>
+                <li>Attempting fraudulent payments</li>
+                <li>Submitting false information</li>
+                <li>Attempting to compromise the website</li>
+                <li>Abusing payment or refund systems</li>
+                <li>Using the service for unlawful purposes</li>
+            </ul>
+
+
+            <h2>8. Order Information</h2>
+
+            <p>
+                Customers should keep their order number and payment
+                information available until their order has been
+                completed.
+            </p>
+
+
+            <h2>9. Service Availability</h2>
+
+            <p>
+                ChongzyStore aims to provide continuous access to its
+                services, but temporary interruptions may occur due
+                to maintenance, technical problems, payment gateway
+                issues or other circumstances beyond our control.
+            </p>
+
+
+            <h2>10. Changes to These Terms</h2>
+
+            <p>
+                ChongzyStore may update these Terms & Conditions when
+                necessary. Updated terms will be published on this
+                page.
+            </p>
+
+
+            <h2>11. Contact</h2>
+
+            <p>
+                If you have questions about these Terms & Conditions,
+                please contact ChongzyStore through the contact
+                method provided on the website.
+            </p>
+
+
+            <a href="{{ url_for('home') }}"
+               class="back-button">
+                ← Back to ChongzyStore
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>

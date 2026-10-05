@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ChongzyStore - MLBB Diamonds & Accounts</title>
+
+    <meta name="google-site-verification" content="OiSTISzSse5ArBqJvd48x1rYy-K5pb01dhPIppy_ozk" />
+    
+
+    <!-- ================= SEO ================= -->
+
+<meta
+    name="description"
+    content="ChongzyStore provides Mobile Legends Bang Bang MLBB diamond recharge services and selected MLBB accounts. Fast ordering, secure online payment and direct customer support."
+>
+
+<meta
+    name="keywords"
+    content="ChongzyStore, MLBB diamonds, Mobile Legends diamonds, MLBB recharge, Mobile Legends recharge, MLBB accounts, Mobile Legends accounts"
+>
+
+<meta
+    name="robots"
+    content="index, follow"
+>
+
+<meta
+    name="author"
+    content="ChongzyStore"
+>
+
+<!-- Social Media Preview -->
+
+<meta
+    property="og:title"
+    content="ChongzyStore - MLBB Diamonds & Accounts"
+>
+
+<meta
+    property="og:description"
+    content="Recharge MLBB Diamonds and browse selected Mobile Legends accounts at ChongzyStore."
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:site_name"
+    content="ChongzyStore"
+>
+
+<!-- ================= END SEO ================= -->
+
+    <style>
+
+        /* =========================================================
+           CHONGZYSTORE - PREMIUM RESPONSIVE DESIGN
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050814;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .navbar {
+            width: 100%;
+            min-height: 72px;
+            padding: 0 6%;
+            background: rgba(5, 8, 20, 0.96);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            backdrop-filter: blur(18px);
+        }
+
+        .logo {
+            color: #00e5ff;
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: #dbeafe;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #00e5ff, #008cff);
+            color: #001016 !important;
+            font-weight: 800 !important;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 229, 255, 0.25);
+        }
+
+        /* MOBILE MENU BUTTON */
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background: rgba(0, 229, 255, 0.08);
+            color: #00e5ff;
+            font-size: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 90px 20px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(0, 229, 255, 0.18),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(0, 115, 255, 0.12),
+                    transparent 30%
+                ),
+                #050814;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 229, 255, 0.05);
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 950px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #00e5ff;
+            text-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+        }
+
+        .hero p {
+            color: #aebbd0;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .hero p strong {
+            color: #ffffff;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-weight: 800;
+            transition: 0.3s ease;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, #00e5ff, #008cff);
+            color: #001016;
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .secondary-button {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #344158;
+            color: #ffffff;
+        }
+
+        .primary-button:hover,
+        .secondary-button:hover {
+            transform: translateY(-4px);
+        }
+
+        /* =========================================================
+           GENERAL
+        ========================================================= */
+
+        .container {
+            width: 90%;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 42px);
+            margin-bottom: 14px;
+        }
+
+        .section-title p {
+            color: #93a4bd;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           RECHARGE REGIONS
+        ========================================================= */
+
+        .regions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .region-card {
+            background: linear-gradient(
+                145deg,
+                rgba(17, 24, 39, 0.98),
+                rgba(7, 12, 25, 0.98)
+            );
+            border: 1px solid #26344c;
+            border-radius: 18px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .region-card:hover {
+            transform: translateY(-7px);
+            border-color: #00e5ff;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .region-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mlbb-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0,229,255,0.25));
+        }
+
+        .region-flag {
+            font-size: 34px;
+        }
+
+        .region-card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .region-code {
+            color: #00e5ff;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .region-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00e5ff, #008cff);
+            color: #001016;
+            padding: 11px 18px;
+            border-radius: 9px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           ACCOUNT STORE
+        ========================================================= */
+
+        .accounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .account-card {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.98),
+                    rgba(2, 6, 23, 0.98)
+                );
+            border: 1px solid rgba(56, 189, 248, 0.14);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: 0.35s ease;
+        }
+
+        .account-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.55);
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.5),
+                0 0 35px rgba(14,165,233,0.12);
+        }
+
+        .account-image {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .no-image {
+            width: 100%;
+            height: 245px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #172554,
+                    #020617
+                );
+        }
+
+        .account-content {
+            padding: 25px;
+        }
+
+        .account-content h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            line-height: 1.35;
+        }
+
+        .account-content h3 a {
+            color: #ffffff;
+        }
+
+        .account-content h3 a:hover {
+            color: #00e5ff;
+        }
+
+        .account-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .account-stat {
+            padding: 12px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+
+        .account-stat span {
+            display: block;
+            color: #64748b;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .account-stat strong {
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+
+        .account-description {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 15px 0;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 17px;
+            background: rgba(14,165,233,0.06);
+            border: 1px solid rgba(56,189,248,0.12);
+            border-radius: 15px;
+        }
+
+        .price-label {
+            color: #64748b;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .price-inr {
+            font-size: 25px;
+            font-weight: 900;
+            color: #38bdf8;
+        }
+
+        .price-usd {
+            font-size: 15px;
+            font-weight: bold;
+            color: #cbd5e1;
+        }
+
+        .whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            font-weight: 800;
+            transition: 0.3s ease;
+        }
+
+        .whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(34,197,94,0.25);
+        }
+
+        .sold {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            text-align: center;
+            border-radius: 12px;
+            background: rgba(239,68,68,0.12);
+            border: 1px solid rgba(239,68,68,0.25);
+            color: #f87171;
+            font-weight: 900;
+        }
+
+        .account-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 5;
+            padding: 7px 12px;
+            border-radius: 50px;
+            background: rgba(22,163,74,0.95);
+            color: white;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-box {
+            background: linear-gradient(
+                145deg,
+                #111827,
+                #080d1c
+            );
+            border: 1px solid #293248;
+            border-radius: 22px;
+            padding: 55px 30px;
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .contact-box h2 {
+            font-size: clamp(28px, 5vw, 38px);
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #aab4c8;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .contact-button {
+            display: inline-block;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid #222b40;
+            padding: 35px 20px;
+            text-align: center;
+            color: #7f8ba2;
+            background: #03050c;
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .accounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar {
+                padding: 0 4%;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                min-height: 70px;
+                padding: 12px 18px;
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+                padding: 10px 0 5px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 560px;
+                padding: 70px 18px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .primary-button,
+            .secondary-button {
+                width: 100%;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .regions {
+                grid-template-columns: 1fr;
+            }
+
+            .accounts {
+                grid-template-columns: 1fr;
+            }
+
+            .account-image,
+            .no-image {
+                height: 230px;
+            }
+
+            .contact-box {
+                padding: 40px 20px;
+            }
+        }
+
+        /* =========================================================
+           SMALL PHONES
+        ========================================================= */
+
+        @media (max-width: 420px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 55px 15px;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .section-title {
+                margin-bottom: 35px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .account-content {
+                padding: 20px;
+            }
+
+            .account-stats {
+                gap: 8px;
+            }
+
+            .account-stat {
+                padding: 10px;
+            }
+
+            .account-stat strong {
+                font-size: 12px;
+            }
+
+            .price-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .price-usd {
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ChongzyStore
+        </div>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#home" onclick="closeMenu()">
+                Home
+            </a>
+
+            <a href="#recharge" onclick="closeMenu()">
+                Recharge
+            </a>
+
+            <a href="#accounts" onclick="closeMenu()">
+                Accounts
+            </a>
+
+            <a href="#contact" onclick="closeMenu()">
+                Contact
+            </a>
+
+            {% if session.get("user_id") %}
+
+                <a href="/account" class="nav-button">
+                    My Account
+                </a>
+
+                <a href="/logout">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="/login">
+                    Login
+                </a>
+
+                <a href="/register" class="nav-button">
+                    Register
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to
+                <span>ChongzyStore</span>
+            </h1>
+
+            <p>
+                Your destination for
+                <strong>MLBB Diamond Recharge</strong>
+                and premium
+                <strong>Mobile Legends accounts</strong>.
+                Fast service, simple ordering and direct customer support.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#recharge" class="primary-button">
+                    💎 Recharge Diamonds
+                </a>
+
+                <a href="#accounts" class="secondary-button">
+                    🎮 View Accounts
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         RECHARGE
+    ========================================================= -->
+
+    <section class="section" id="recharge">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    💎 Diamond Recharge
+                </h2>
+
+                <p>
+                    Select your MLBB region/server and choose a diamond package.
+                </p>
+
+            </div>
+
+
+            <div class="regions">
+
+                {% for region in regions %}
+
+                    <div class="region-card">
+
+                        <div class="region-icon">
+
+                            <img
+                                src="{{ url_for('static', filename='images/mlbb-logo.png') }}"
+                                alt="Mobile Legends"
+                                class="mlbb-logo"
+                            >
+
+                            <div class="region-flag">
+
+                                {% set region_name = region.name|lower %}
+
+                                {% if "indonesia" in region_name %}
+                                    🇮🇩
+                                {% elif "malaysia" in region_name %}
+                                    🇲🇾
+                                {% elif "russia" in region_name %}
+                                    🇷🇺
+                                {% elif "philippines" in region_name %}
+                                    🇵🇭
+                                {% elif "india" in region_name %}
+                                    🇮🇳
+                                {% elif "singapore" in region_name %}
+                                    🇸🇬
+                                {% elif "thailand" in region_name %}
+                                    🇹🇭
+                                {% elif "myanmar" in region_name %}
+                                    🇲🇲
+                                {% elif "vietnam" in region_name %}
+                                    🇻🇳
+                                {% elif "bangladesh" in region_name %}
+                                    🇧🇩
+                                {% elif "brazil" in region_name %}
+                                    🇧🇷
+                                {% elif "japan" in region_name %}
+                                    🇯🇵
+                                {% elif "south korea" in region_name or "korea" in region_name %}
+                                    🇰🇷
+                                {% elif "china" in region_name %}
+                                    🇨🇳
+                                {% elif "taiwan" in region_name %}
+                                    🇹🇼
+                                {% elif "usa" in region_name or "united states" in region_name %}
+                                    🇺🇸
+                                {% elif "uk" in region_name or "united kingdom" in region_name %}
+                                    🇬🇧
+                                {% elif "canada" in region_name %}
+                                    🇨🇦
+                                {% elif "australia" in region_name %}
+                                    🇦🇺
+                                {% elif "nepal" in region_name %}
+                                    🇳🇵
+                                {% elif "sri lanka" in region_name %}
+                                    🇱🇰
+                                {% elif "pakistan" in region_name %}
+                                    🇵🇰
+                                {% elif "mexico" in region_name %}
+                                    🇲🇽
+                                {% elif "global" in region_name %}
+                                    🌐
+                                {% else %}
+                                    🌍
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            {{ region.name }}
+                        </h3>
+
+                        <div class="region-code">
+                            Server: {{ region.code }}
+                        </div>
+
+                        <a
+                            href="/recharge/{{ region.id }}"
+                            class="region-button"
+                        >
+                            View Diamonds
+                        </a>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="region-card">
+
+                        <div class="region-icon">
+
+                            <img
+                                src="{{ url_for('static', filename='images/mlbb-logo.png') }}"
+                                alt="Mobile Legends"
+                                class="mlbb-logo"
+                            >
+
+                            <div class="region-flag">
+                                🌍
+                            </div>
+
+                        </div>
+
+                        <h3>
+                            No Servers Available
+                        </h3>
+
+                        <p style="color:#94a3b8;line-height:1.6;">
+                            Admin has not added any recharge regions yet.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         MLBB ACCOUNTS
+    ========================================================= -->
+
+    <section class="section" id="accounts">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    🎮 MLBB Accounts For Sale
+                </h2>
+
+                <p>
+                    Premium Mobile Legends accounts available directly from ChongzyStore.
+                </p>
+
+            </div>
+
+
+            <div class="accounts">
+
+                {% if accounts %}
+
+                    {% for account in accounts %}
+
+                        <div class="account-card">
+
+                            {% if account.status == "Available" %}
+
+                                <div class="account-badge">
+                                    ● Available
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- ACCOUNT IMAGE -->
+
+                            {% if account.image %}
+
+                                <a
+                                    href="{{ url_for('account_details', account_id=account.id) }}"
+                                    style="display:block;"
+                                >
+
+                                    <img
+                                        src="{{ url_for('static', filename='uploads/' + account.image) }}"
+                                        class="account-image"
+                                        alt="{{ account.title }}"
+                                    >
+
+                                </a>
+
+                            {% else %}
+
+                                <div class="no-image">
+                                    🎮
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- ACCOUNT CONTENT -->
+
+                            <div class="account-content">
+
+                                <h3>
+
+                                    <a
+                                        href="{{ url_for('account_details', account_id=account.id) }}"
+                                    >
+                                        {{ account.title }}
+                                    </a>
+
+                                </h3>
+
+
+                                <!-- ACCOUNT STATS -->
+
+                                <div class="account-stats">
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Rank
+                                        </span>
+
+                                        <strong>
+                                            🏆 {{ account.rank or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Level
+                                        </span>
+
+                                        <strong>
+                                            ⭐ {{ account.level or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Skins
+                                        </span>
+
+                                        <strong>
+                                            👕 {{ account.skins or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Heroes
+                                        </span>
+
+                                        <strong>
+                                            ⚔️ {{ account.heroes or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- DESCRIPTION -->
+
+                                {% if account.description %}
+
+                                    <div class="account-description">
+                                        {{ account.description }}
+                                    </div>
+
+                                {% endif %}
+
+
+                                <!-- PRICE -->
+
+                                <div class="price-box">
+
+                                    <div>
+
+                                        <div class="price-label">
+                                            Price
+                                        </div>
+
+                                        <div class="price-inr">
+                                            ₹{{ "%.2f"|format(account.price) }}
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="price-usd">
+                                        ${{ "%.2f"|format(account.usd_price) }}
+                                    </div>
+
+                                </div>
+
+
+                                <!-- PURCHASE -->
+
+                                {% if account.status == "Available" %}
+
+                                    <a
+                                        href="https://wa.me/919863060164?text=Hello%20ChongzyStore%2C%20I%20am%20interested%20in%20buying%20the%20MLBB%20account%20%22{{ account.title|urlencode }}%22%20priced%20at%20₹{{ account.price }}"
+                                        target="_blank"
+                                        class="whatsapp"
+                                    >
+                                        💬 Buy This Account
+                                    </a>
+
+                                {% else %}
+
+                                    <div class="sold">
+                                        🔒 SOLD
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                {% else %}
+
+                    <div class="account-card">
+
+                        <div class="no-image">
+                            🎮
+                        </div>
+
+                        <div class="account-content">
+
+                            <h3>
+                                No Accounts Available
+                            </h3>
+
+                            <p style="color:#94a3b8;line-height:1.7;">
+                                New MLBB accounts will appear here
+                                when they are added by the administrator.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section class="section" id="contact">
+
+        <div class="container">
+
+            <div class="contact-box">
+
+                <h2>
+                    📱 Contact ChongzyStore
+                </h2>
+
+                <p>
+                    Need help with a recharge, account purchase,
+                    payment or anything else?
+                    Contact us directly on WhatsApp.
+                </p>
+
+                <a
+                    href="https://wa.me/919863060164"
+                    target="_blank"
+                    class="contact-button"
+                >
+                    💬 Chat on WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+<footer>
+
+    <div style="margin-bottom:12px;">
+        © 2026 ChongzyStore. All rights reserved.
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:18px; flex-wrap:wrap;">
+
+        <a href="{{ url_for('terms') }}"
+           style="color:#94a3b8; text-decoration:none;">
+            Terms & Conditions
+        </a>
+
+        <a href="{{ url_for('privacy') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    Privacy Policy
+</a>
+
+<a href="{{ url_for('refund') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    Refund & Cancellation
+</a>
+
+<a href="{{ url_for('faq') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    FAQ
+</a>
+
+
+
+        <a href="#contact"
+           style="color:#94a3b8; text-decoration:none;">
+            Contact
+        </a>
+
+    </div>
+
+</footer>
+
+
+    <!-- =========================================================
+         MOBILE MENU JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("navLinks");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        function closeMenu() {
+
+            const menu = document.getElementById("navLinks");
+
+            menu.classList.remove("active");
+
+        }
+
+    </script>
+
+</body>
+</html>

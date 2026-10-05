@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login - ChongzyStore</title>
+
+    <style>
+
+        /* =====================================================
+           CHONGZYSTORE LOGIN PAGE
+           PREMIUM + MOBILE RESPONSIVE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(2, 6, 23, 0.82),
+                    rgba(2, 6, 23, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            padding: 25px;
+        }
+
+        /* =====================================================
+           BACKGROUND GLOW
+        ===================================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            width: 450px;
+            height: 450px;
+
+            background: rgba(0, 229, 255, 0.08);
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            top: 10%;
+            left: 10%;
+
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            background: rgba(37, 99, 235, 0.10);
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            bottom: 5%;
+            right: 5%;
+
+            pointer-events: none;
+        }
+
+        /* =====================================================
+           LOGIN BOX
+        ===================================================== */
+
+        .box {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 440px;
+
+            padding: 45px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.97),
+                    rgba(5, 10, 25, 0.97)
+                );
+
+            border-radius: 24px;
+
+            border: 1px solid rgba(56, 189, 248, 0.18);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.60),
+                0 0 40px rgba(0, 229, 255, 0.05);
+
+            backdrop-filter: blur(20px);
+
+            animation: boxAppear 0.6s ease;
+        }
+
+        @keyframes boxAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+            text-align: center;
+
+            color: #00e5ff;
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        h1 {
+            text-align: center;
+
+            font-size: 34px;
+
+            line-height: 1.2;
+
+            margin-bottom: 10px;
+
+            font-weight: 900;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 30px;
+        }
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error {
+            background: rgba(239, 68, 68, 0.10);
+
+            border: 1px solid rgba(239, 68, 68, 0.50);
+
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            color: #fca5a5;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin-bottom: 22px;
+        }
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        form {
+            width: 100%;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: #e2e8f0;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        input {
+            width: 100%;
+
+            min-height: 52px;
+
+            padding: 14px 16px;
+
+            border-radius: 11px;
+
+            border: 1px solid #334155;
+
+            background: rgba(15, 23, 42, 0.90);
+
+            color: white;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus {
+            border-color: #00e5ff;
+
+            background: rgba(15, 23, 42, 1);
+
+            box-shadow:
+                0 0 0 3px rgba(0, 229, 255, 0.10),
+                0 0 20px rgba(0, 229, 255, 0.05);
+        }
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
+
+        button {
+            width: 100%;
+
+            min-height: 54px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #008cff
+                );
+
+            color: #001016;
+
+            font-size: 16px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                filter 0.25s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+
+            filter: brightness(1.05);
+
+            box-shadow:
+                0 12px 30px rgba(0, 229, 255, 0.22);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           REGISTER
+        ===================================================== */
+
+        .register {
+            text-align: center;
+
+            margin-top: 28px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .register a {
+            color: #38bdf8;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .register a:hover {
+            color: #00e5ff;
+
+            text-decoration: underline;
+        }
+
+        /* =====================================================
+           BACK TO HOME
+        ===================================================== */
+
+        .home-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .home-link:hover {
+            color: #00e5ff;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .box {
+                max-width: 100%;
+
+                padding: 35px 28px;
+
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 420px) {
+
+            body {
+                padding: 14px;
+            }
+
+            .box {
+                padding: 30px 20px;
+
+                border-radius: 18px;
+            }
+
+            .logo {
+                font-size: 12px;
+
+                letter-spacing: 1.5px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+
+                margin-bottom: 25px;
+            }
+
+            label {
+                font-size: 13px;
+            }
+
+            input {
+                min-height: 50px;
+
+                padding: 13px 14px;
+
+                font-size: 14px;
+            }
+
+            button {
+                min-height: 52px;
+
+                font-size: 15px;
+            }
+
+            .register {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="box">
+
+
+        <div class="logo">
+            CHONGZYSTORE
+        </div>
+
+
+        <h1>
+            Welcome Back
+        </h1>
+
+
+        <div class="subtitle">
+            Login to your ChongzyStore account
+        </div>
+
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+
+            <div class="input-group">
+
+                <label for="login">
+                    Email or Phone
+                </label>
+
+                <input
+                    id="login"
+                    type="text"
+                    name="login"
+                    placeholder="Enter your email or phone"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                Login
+            </button>
+
+
+        </form>
+
+
+        <div class="register">
+
+            Don't have an account?
+
+            <a href="{{ url_for('register') }}">
+                Create Account
+            </a>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('home') }}"
+            class="home-link"
+        >
+            ← Back to ChongzyStore
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>
