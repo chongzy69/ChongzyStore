@@ -1952,37 +1952,31 @@ def admin_logout():
 def sitemap():
 
     pages = [
-        url_for("home", _external=True),
-        url_for("terms", _external=True),
-        url_for("privacy", _external=True),
-        url_for("refund", _external=True),
-        url_for("faq", _external=True),
-        url_for("login", _external=True),
-        url_for("register", _external=True)
+        "https://chongzystore.in/",
+        "https://chongzystore.in/terms",
+        "https://chongzystore.in/privacy",
+        "https://chongzystore.in/refund",
+        "https://chongzystore.in/faq",
+        "https://chongzystore.in/login",
+        "https://chongzystore.in/register"
     ]
 
-    sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>'
-
-    sitemap_xml += (
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-    )
+    sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+"""
 
     for page in pages:
+        sitemap_xml += f"""    <url>
+        <loc>{page}</loc>
+    </url>
+"""
 
-        sitemap_xml += f"""
-        <url>
-            <loc>{page}</loc>
-        </url>
-        """
-
-    sitemap_xml += "</urlset>"
+    sitemap_xml += """</urlset>"""
 
     return Response(
         sitemap_xml,
         mimetype="application/xml"
     )
-
-
 # =========================================================
 # ROBOTS.TXT
 # =========================================================
