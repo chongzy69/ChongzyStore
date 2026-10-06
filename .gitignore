@@ -6,7 +6,8 @@ venv/
 # Local database
 instance/
 *.db
-
+static/uploads/
+.env
 # Python
 __pycache__/
 *.pyc
