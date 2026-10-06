@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MLBB Products | ChongzyStore</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #123b5d,
+                    #050912 45%,
+                    #020409
+                );
+
+            color: white;
+
+            min-height: 100vh;
+
+        }
+
+        .container {
+
+            width: 95%;
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding: 30px 0 60px;
+
+        }
+
+        .topbar {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .title {
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+        }
+
+        .subtitle {
+
+            color: #91a4b8;
+
+            margin-top: 7px;
+
+        }
+
+        .back {
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border: 1px solid
+                rgba(255,255,255,0.15);
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+        }
+
+        .region-box {
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border: 1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 25px;
+
+        }
+
+        .region-box h2 {
+
+            margin-top: 0;
+
+        }
+
+        .products {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(310px, 1fr)
+                );
+
+            gap: 20px;
+
+        }
+
+        .product {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.03)
+                );
+
+            border: 1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.25);
+
+        }
+
+        .product-title {
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            margin-bottom: 5px;
+
+        }
+
+        .product-id {
+
+            font-size: 12px;
+
+            color: #7890a5;
+
+            margin-bottom: 20px;
+
+        }
+
+        label {
+
+            display: block;
+
+            font-size: 13px;
+
+            color: #9db0c3;
+
+            margin-bottom: 7px;
+
+        }
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            border: 1px solid
+                rgba(255,255,255,0.15);
+
+            background:
+                rgba(0,0,0,0.35);
+
+            color: white;
+
+            outline: none;
+
+        }
+
+        input:focus,
+        select:focus {
+
+            border-color: #00d9ff;
+
+        }
+
+        .save {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #0077ff
+                );
+
+            color: #001018;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+        .save:hover {
+
+            transform: translateY(-1px);
+
+        }
+
+        .empty {
+
+            padding: 50px;
+
+            text-align: center;
+
+            color: #91a4b8;
+
+            border: 1px dashed
+                rgba(255,255,255,0.2);
+
+            border-radius: 18px;
+
+        }
+
+        .active {
+
+            color: #47ff9a;
+
+            font-weight: 800;
+
+        }
+
+        .inactive {
+
+            color: #ff7070;
+
+            font-weight: 800;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+
+        <div>
+
+            <div class="title">
+                🎮 MLBB Product Manager
+            </div>
+
+            <div class="subtitle">
+                Manage diamonds, Weekly Passes,
+                prices and Arcadezy offers.
+                <form
+    method="POST"
+    action="{{ url_for('import_arcadezy') }}"
+    style="margin-top:20px;"
+>
+
+    <button
+        type="submit"
+        class="save"
+        onclick="
+            return confirm(
+                'Import all current MLBB products from Arcadezy?'
+            );
+        "
+    >
+        🔄 IMPORT ALL ARCADEZY PRODUCTS
+    </button>
+
+</form>
+            </div>
+
+        </div>
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="back"
+        >
+            ← Back to Admin
+        </a>
+
+    </div>
+
+
+    {% if regions %}
+
+        {% for region in regions %}
+
+            <div class="region-box">
+
+                <h2>
+                    🌍 {{ region.name }}
+                </h2>
+
+                <div class="subtitle">
+                    Region Code:
+                    {{ region.code }}
+                </div>
+
+
+                <div class="products">
+
+                    {% set region_packages = [] %}
+
+                    {% for package in packages %}
+
+                        {% if package.region_id == region.id %}
+
+                            {% set _ =
+                                region_packages.append(
+                                    package
+                                )
+                            %}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                    {% if region_packages %}
+
+                        {% for package in region_packages %}
+
+                            <div class="product">
+
+                                <div
+                                    class="product-title"
+                                >
+
+                                    {% if package.package_name %}
+
+                                        {{ package.package_name }}
+
+                                    {% elif package.diamonds %}
+
+                                        💎
+                                        {{ package.diamonds }}
+                                        Diamonds
+
+                                    {% else %}
+
+                                        MLBB Package
+
+                                    {% endif %}
+
+                                </div>
+
+
+                                <div
+                                    class="product-id"
+                                >
+
+                                    Local Package ID:
+                                    {{ package.id }}
+
+                                </div>
+
+
+                                <form
+                                    method="POST"
+                                    action="{{
+                                        url_for(
+                                            'admin_save_product',
+                                            package_id=package.id
+                                        )
+                                    }}"
+                                >
+
+                                    <label>
+                                        Package Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="package_name"
+                                        value="{{
+                                            package.package_name
+                                            or ''
+                                        }}"
+                                        placeholder="86 Diamonds / Weekly Pass"
+                                    >
+
+
+                                    <label>
+                                        Diamonds
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        name="diamonds"
+                                        value="{{
+                                            package.diamonds
+                                            if package.diamonds is not none
+                                            else ''
+                                        }}"
+                                        placeholder="86"
+                                    >
+
+
+                                    <label>
+                                        Your Selling Price (₹)
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        name="price"
+                                        step="0.01"
+                                        value="{{
+                                            package.price
+                                        }}"
+                                        placeholder="99"
+                                        required
+                                    >
+
+
+                                    <label>
+                                        Arcadezy Offer ID
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="arcadezy_offer_id"
+                                        value="{{
+                                            package.arcadezy_offer_id
+                                            or ''
+                                        }}"
+                                        placeholder="Paste Arcadezy Offer ID"
+                                    >
+
+
+                                    <label>
+                                        Product Status
+                                    </label>
+
+                                    <select
+                                        name="active"
+                                    >
+
+                                        <option
+                                            value="1"
+                                            {% if package.active %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Active
+                                        </option>
+
+                                        <option
+                                            value="0"
+                                            {% if not package.active %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Disabled
+                                        </option>
+
+                                    </select>
+
+
+                                    <button
+                                        type="submit"
+                                        class="save"
+                                    >
+                                        💾 SAVE PRODUCT
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="empty">
+
+                            No packages have been
+                            created for this region yet.
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+
+            No MLBB regions found.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

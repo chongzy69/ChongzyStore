@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Manage Packages - ChongzyStore</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050814;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            min-height: 70px;
+            padding: 12px 5%;
+            background: rgba(5,8,20,.97);
+            border-bottom: 1px solid #1e293b;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #00e5ff;
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            background: #111827;
+            border: 1px solid #334155;
+            padding: 10px 16px;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            border-color: #00e5ff;
+            color: #00e5ff;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 35px 0 70px;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .header h1 span {
+            color: #00e5ff;
+        }
+
+        .header p {
+            color: #64748b;
+        }
+
+        .panel {
+            background:
+                linear-gradient(
+                    145deg,
+                    #0f172a,
+                    #070b16
+                );
+
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns:
+                1fr 1fr auto;
+            gap: 12px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+
+            border-radius: 9px;
+            border: 1px solid #334155;
+
+            background: #080d19;
+            color: white;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #00e5ff;
+        }
+
+        .btn {
+            border: none;
+
+            padding: 13px 20px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: 800;
+
+            color: #001016;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #008cff
+                );
+        }
+
+        .clear {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            color: #94a3b8;
+
+            text-decoration: none;
+        }
+
+        .count {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .package-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(300px, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+        .package {
+            background: #080d19;
+
+            border: 1px solid #1e293b;
+
+            border-radius: 15px;
+
+            padding: 18px;
+        }
+
+        .package:hover {
+            border-color: #00e5ff;
+        }
+
+        .package-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .diamond {
+            color: #38bdf8;
+
+            font-size: 22px;
+
+            font-weight: 900;
+        }
+
+        .region {
+            color: #94a3b8;
+
+            font-size: 12px;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        .active {
+            color: #4ade80;
+
+            background: #092516;
+        }
+
+        .inactive {
+            color: #f87171;
+
+            background: #2a1014;
+        }
+
+        .package form {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .package label {
+            color: #64748b;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .save {
+            margin-top: 5px;
+
+            width: 100%;
+        }
+
+        .delete {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 10px;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            color: #f87171;
+
+            background: #2a1014;
+
+            border: 1px solid #7f1d1d;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .empty {
+            padding: 50px;
+
+            text-align: center;
+
+            color: #64748b;
+        }
+
+        @media(max-width:700px) {
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        ChongzyStore
+    </div>
+
+    <a
+        href="{{ url_for('admin_dashboard') }}"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+<main class="container">
+
+
+    <div class="header">
+
+        <h1>
+            📦 Manage
+            <span>Packages</span>
+        </h1>
+
+        <p>
+            Search, edit, activate or delete your
+            MLBB diamond packages.
+        </p>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="panel">
+
+        <form
+    method="POST"
+    action="{{ url_for('auto_price_packages') }}"
+    style="margin-bottom:25px;"
+    onsubmit="return confirm('Automatically set selling prices for all Arcadezy packages?');"
+>
+
+    <button
+        type="submit"
+        style="
+            background:linear-gradient(135deg,#00c853,#00e676);
+            color:white;
+            border:none;
+            padding:14px 24px;
+            border-radius:12px;
+            font-weight:bold;
+            cursor:pointer;
+            font-size:15px;
+        "
+    >
+    
+        💰 AUTO PRICE ALL ARCADEZY PACKAGES
+    </button>
+
+</form>
+
+        <form
+            method="GET"
+            action="{{ url_for('manage_packages') }}"
+        >
+
+            <div class="filters">
+
+                <select name="region_id">
+
+                    <option value="">
+                        🌍 All Regions
+                    </option>
+
+                    {% for region in regions %}
+
+                        <option
+                            value="{{ region.id }}"
+                            {% if selected_region_id == region.id %}
+                                selected
+                            {% endif %}
+                        >
+
+                            {{ region.name }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="🔎 Search diamonds or package name"
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    🔍 Search
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <a
+            href="{{ url_for('manage_packages') }}"
+            class="clear"
+        >
+            ✕ Clear Filters
+        </a>
+
+    </div>
+
+
+    <!-- PACKAGES -->
+
+    <div class="panel">
+
+        <div class="count">
+
+            {{ packages|length }}
+            package(s) found
+
+        </div>
+
+
+        {% if packages %}
+
+            <div class="package-grid">
+
+                {% for package in packages %}
+
+                    <div class="package">
+
+
+                        <div class="package-top">
+
+                            <div>
+
+                                <div class="diamond">
+
+                                    💎
+                                    {{ package.diamonds }}
+
+                                </div>
+
+                                <div class="region">
+
+                                    🌍
+                                    {{ package.region.name }}
+
+                                </div>
+
+                            </div>
+
+
+                            {% if package.active %}
+
+                                <span
+                                    class="status active"
+                                >
+                                    ACTIVE
+                                </span>
+
+                            {% else %}
+
+                                <span
+                                    class="status inactive"
+                                >
+                                    INACTIVE
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <form
+                            method="POST"
+                            action="{{
+                                url_for(
+                                    'update_package',
+                                    package_id=package.id
+                                )
+                            }}"
+                        >
+
+
+                            <label>
+                                Diamonds
+                            </label>
+
+                            <input
+                                type="number"
+                                name="diamonds"
+                                value="{{ package.diamonds }}"
+                                min="1"
+                                required
+                            >
+
+
+                            <label>
+                                Selling Price ₹
+                            </label>
+
+                            <input
+                                type="number"
+                                name="price"
+                                value="{{ package.price }}"
+                                step="0.01"
+                                min="0"
+                                required
+                            >
+
+
+                            <label>
+                                Package Status
+                            </label>
+
+                            <select name="active">
+
+                                <option
+                                    value="1"
+                                    {% if package.active %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    🟢 Active
+                                </option>
+
+                                <option
+                                    value="0"
+                                    {% if not package.active %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    🔴 Inactive
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                type="submit"
+                                class="btn save"
+                            >
+                                💾 Save Changes
+                            </button>
+
+                        </form>
+
+                        
+
+
+                        <a
+    href="{{
+        url_for(
+            'delete_region_package',
+            package_id=package.id,
+            region_id=selected_region_id,
+            search=search
+        )
+    }}"
+                            class="delete"
+                            onclick="
+                                return confirm(
+                                    'Delete this package permanently?'
+                                );
+                            "
+                        >
+                            🗑️ Delete Package
+                        </a>
+
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty">
+
+                <h2>
+                    No packages found
+                </h2>
+
+                <p>
+                    Try another region or search.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+</main>
+
+<form
+    method="POST"
+    action="{{ url_for('activate_all_packages') }}"
+    style="margin-bottom:25px;"
+    onsubmit="return confirm('Activate ALL valid Arcadezy packages for customers?');"
+>
+
+    <button
+        type="submit"
+        style="
+            background:linear-gradient(
+                135deg,
+                #00c853,
+                #00e676
+            );
+
+            color:white;
+            border:none;
+            padding:14px 24px;
+            border-radius:12px;
+            font-weight:bold;
+            cursor:pointer;
+            font-size:15px;
+            box-shadow:0 10px 25px rgba(0,200,83,.25);
+        "
+    >
+        🟢 ACTIVATE ALL PACKAGES
+
+    </button>
+
+</form>
+
+</body>
+
+</html>

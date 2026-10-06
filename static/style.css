@@ -1,0 +1,1188 @@
+/* =========================================================
+   CHONGZYSTORE - GAMING STORE UI
+   Black + Gold Mobile App Style
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+    padding-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    width: 100%;
+    height: 76px;
+
+    background: #050505;
+
+    border-bottom: 2px solid #d9aa00;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.logo::first-letter {
+    color: #ffd000;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    padding: 11px 15px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #ffd000;
+}
+
+.nav-button {
+    background: #ffd000 !important;
+    color: #050505 !important;
+    border-radius: 8px !important;
+    font-weight: 900 !important;
+}
+
+.nav-button:hover {
+    background: #ffdf3d !important;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 590px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 208, 0, 0.17),
+            transparent 40%
+        ),
+        #050505;
+
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffd000,
+        transparent
+    );
+}
+
+.hero-content {
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.98;
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #ffd000;
+
+    text-shadow:
+        0 0 20px rgba(255, 208, 0, 0.2);
+}
+
+.hero p {
+    max-width: 720px;
+    margin: auto;
+
+    color: #bcbcbc;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero p strong {
+    color: white;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border-radius: 10px;
+
+    font-weight: 900;
+
+    transition: 0.25s ease;
+}
+
+.primary-button {
+    background: linear-gradient(
+        135deg,
+        #ffd000,
+        #ffb700
+    );
+
+    color: #050505;
+
+    box-shadow:
+        0 8px 30px rgba(255, 208, 0, 0.2);
+}
+
+.secondary-button {
+    border: 1px solid #383838;
+    background: #101010;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   APP STYLE MOBILE PROMO
+   ========================================================= */
+
+.mobile-store-area {
+    display: none;
+}
+
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
+
+.section {
+    padding: 90px 20px;
+    background: #050505;
+}
+
+.container {
+    width: min(1180px, 94%);
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #888;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   REGION / RECHARGE CARDS
+   ========================================================= */
+
+.regions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.region-card {
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+
+    border: 1px solid #292929;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.region-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #ffd000;
+
+    box-shadow:
+        0 10px 35px rgba(255, 208, 0, 0.12);
+}
+
+.region-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.mlbb-logo {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    border-radius: 14px;
+}
+
+.region-flag {
+    font-size: 28px;
+}
+
+.region-card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.region-code {
+    color: #888;
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+.region-button {
+    display: block;
+
+    background: #ffd000;
+    color: #050505;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    font-weight: 900;
+
+    transition: 0.2s ease;
+}
+
+.region-button:hover {
+    background: #ffe36b;
+}
+
+/* =========================================================
+   ACCOUNT GRID
+   ========================================================= */
+
+.accounts {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 22px;
+}
+
+.account-card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #161616,
+            #090909
+        );
+
+    border: 1px solid #292929;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.account-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #ffd000;
+}
+
+.account-badge {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 5;
+
+    background: #ffd000;
+    color: #050505;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.account-image {
+    display: block;
+
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    transition: 0.3s ease;
+}
+
+.account-card:hover .account-image {
+    transform: scale(1.03);
+}
+
+.no-image {
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+
+    font-size: 55px;
+}
+
+.account-content {
+    padding: 20px;
+}
+
+.account-content h3 {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+.account-stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+.account-stat {
+    background: #101010;
+
+    border: 1px solid #222;
+
+    border-radius: 9px;
+
+    padding: 10px;
+}
+
+.account-stat span {
+    display: block;
+
+    color: #777;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 4px;
+}
+
+.account-stat strong {
+    font-size: 13px;
+}
+
+.account-description {
+    color: #999;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-top: 15px;
+}
+
+.price-box {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #252525;
+}
+
+.price-inr {
+    color: #ffd000;
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+.price-usd {
+    color: #aaa;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.whatsapp {
+    display: block;
+
+    margin-top: 15px;
+
+    padding: 13px;
+
+    text-align: center;
+
+    background: #20c76a;
+
+    color: white;
+
+    border-radius: 9px;
+
+    font-weight: 900;
+
+    transition: 0.2s ease;
+}
+
+.whatsapp:hover {
+    background: #25df76;
+
+    transform: translateY(-2px);
+}
+
+.sold {
+    margin-top: 15px;
+
+    padding: 13px;
+
+    text-align: center;
+
+    background: #292929;
+
+    color: #999;
+
+    border-radius: 9px;
+
+    font-weight: 900;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-box {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background: #111;
+
+    border: 1px solid #292929;
+
+    border-radius: 20px;
+}
+
+.contact-box h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.contact-box p {
+    color: #999;
+
+    line-height: 1.7;
+}
+
+.contact-button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 14px 28px;
+
+    background: #20c76a;
+
+    color: white;
+
+    border-radius: 9px;
+
+    font-weight: 900;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    border-top: 1px solid #242424;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #666;
+
+    background: #050505;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding-bottom: 78px;
+    }
+
+    /* -------------------------
+       TOP NAV
+       ------------------------- */
+
+    .navbar {
+        height: 67px;
+
+        padding: 0 16px;
+
+        border-bottom: 2px solid #d4a900;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links a {
+        display: none;
+    }
+
+    .nav-links a[href="/login"],
+    .nav-links a[href="/account"],
+    .nav-links .nav-button {
+        display: block;
+
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+
+    /* -------------------------
+       HERO
+       ------------------------- */
+
+    .hero {
+        min-height: 390px;
+
+        padding:
+            55px
+            18px
+            45px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+        line-height: 1;
+    }
+
+    .hero p {
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-top: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        margin-top: 25px;
+
+        gap: 10px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+    /* -------------------------
+       APP STYLE AREA
+       ------------------------- */
+
+    .mobile-store-area {
+        display: block;
+
+        background: #050505;
+
+        padding: 16px 12px 5px;
+    }
+
+    .promo-banner {
+        min-height: 145px;
+
+        border-radius: 15px;
+
+        overflow: hidden;
+
+        position: relative;
+
+        background:
+            radial-gradient(
+                circle at 80% 40%,
+                rgba(255, 208, 0, 0.28),
+                transparent 30%
+            ),
+            linear-gradient(
+                135deg,
+                #191300,
+                #050505
+            );
+
+        border: 1px solid #4e4100;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 20px;
+    }
+
+    .promo-content {
+        position: relative;
+
+        z-index: 2;
+
+        max-width: 65%;
+    }
+
+    .promo-small {
+        color: #ffd000;
+
+        font-size: 10px;
+
+        font-weight: 900;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+
+        margin-bottom: 5px;
+    }
+
+    .promo-title {
+        font-size: 25px;
+
+        font-weight: 900;
+
+        line-height: 1.05;
+    }
+
+    .promo-title span {
+        color: #ffd000;
+    }
+
+    .promo-text {
+        color: #aaa;
+
+        font-size: 11px;
+
+        margin-top: 8px;
+    }
+
+    .promo-logo {
+        position: absolute;
+
+        right: 10px;
+
+        width: 130px;
+        height: 130px;
+
+        object-fit: contain;
+
+        opacity: 0.85;
+
+        filter:
+            drop-shadow(
+                0 0 18px
+                rgba(255, 208, 0, 0.25)
+            );
+    }
+
+    /* -------------------------
+       QUICK ACTIONS
+       ------------------------- */
+
+    .quick-actions {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 7px;
+
+        margin-top: 15px;
+    }
+
+    .quick-action {
+        min-height: 86px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #1a1a1a,
+                #0d0d0d
+            );
+
+        border: 1px solid #282828;
+
+        border-radius: 12px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+
+        transition: 0.2s;
+    }
+
+    .quick-action:hover {
+        border-color: #ffd000;
+    }
+
+    .quick-icon {
+        width: 37px;
+        height: 37px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+
+        background: #ffd000;
+
+        color: #050505;
+
+        font-size: 19px;
+
+        margin-bottom: 7px;
+    }
+
+    .quick-action span {
+        font-size: 9px;
+
+        color: #ddd;
+
+        font-weight: 700;
+    }
+
+    /* -------------------------
+       SECTION
+       ------------------------- */
+
+    .section {
+        padding: 55px 12px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .section-title {
+        margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .section-title p {
+        font-size: 12px;
+    }
+
+    /* -------------------------
+       REGIONS
+       ------------------------- */
+
+    .regions {
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 10px;
+
+        padding-bottom: 8px;
+
+        scroll-snap-type: x mandatory;
+    }
+
+    .regions::-webkit-scrollbar {
+        display: none;
+    }
+
+    .region-card {
+        min-width: 180px;
+
+        padding: 17px;
+
+        border-radius: 14px;
+
+        scroll-snap-align: start;
+    }
+
+    .mlbb-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .region-flag {
+        font-size: 22px;
+    }
+
+    .region-card h3 {
+        font-size: 15px;
+    }
+
+    .region-code {
+        font-size: 10px;
+    }
+
+    .region-button {
+        font-size: 11px;
+
+        padding: 11px;
+    }
+
+    /* -------------------------
+       ACCOUNTS
+       ------------------------- */
+
+    .accounts {
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 12px;
+
+        padding-bottom: 10px;
+
+        scroll-snap-type: x mandatory;
+    }
+
+    .accounts::-webkit-scrollbar {
+        display: none;
+    }
+
+    .account-card {
+        min-width: 285px;
+
+        scroll-snap-align: start;
+
+        border-radius: 15px;
+    }
+
+    .account-image {
+        height: 190px;
+    }
+
+    .account-content {
+        padding: 15px;
+    }
+
+    .account-content h3 {
+        font-size: 17px;
+    }
+
+    .account-stat {
+        padding: 8px;
+    }
+
+    .account-stat strong {
+        font-size: 11px;
+    }
+
+    .price-inr {
+        font-size: 21px;
+    }
+
+    /* -------------------------
+       CONTACT
+       ------------------------- */
+
+    .contact-box {
+        padding: 35px 20px;
+
+        border-radius: 16px;
+    }
+
+    .contact-box h2 {
+        font-size: 25px;
+    }
+
+    /* -------------------------
+       FIXED BOTTOM NAV
+       ------------------------- */
+
+    .mobile-bottom-nav {
+        position: fixed;
+
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+
+        height: 67px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #e5b900,
+                #ffd000
+            );
+
+        border-radius: 20px;
+
+        z-index: 99999;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        box-shadow:
+            0 10px 40px
+            rgba(0, 0, 0, 0.7);
+    }
+
+    .mobile-bottom-nav a {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #090909;
+
+        font-size: 10px;
+
+        font-weight: 900;
+
+        gap: 4px;
+
+        border-radius: 17px;
+    }
+
+    .mobile-bottom-nav a span:first-child {
+        font-size: 20px;
+    }
+
+    .mobile-bottom-nav a.active {
+        background: #171717;
+
+        color: white;
+
+        margin: 5px;
+
+        border-radius: 15px;
+    }
+
+    footer {
+        padding-bottom: 100px;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-links a[href="/login"],
+    .nav-links a[href="/account"],
+    .nav-links .nav-button {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .quick-action {
+        min-height: 78px;
+    }
+
+    .quick-icon {
+        width: 33px;
+        height: 33px;
+        font-size: 17px;
+    }
+
+    .quick-action span {
+        font-size: 8px;
+    }
+}
+body {
+    background: red !important;
+}
+/* =====================================================
+   WALLET NAVIGATION BUTTON
+   ===================================================== */
+
+.wallet-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 10px 18px;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #f5c400,
+        #ff8c00
+    );
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 20px rgba(255, 174, 0, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.wallet-nav:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 28px rgba(255, 174, 0, 0.4);
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+# Local database
+instance/
+*.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment secrets
+.env

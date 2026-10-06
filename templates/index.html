@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=999">
+
+    <title>ChongzyStore - MLBB Diamonds & Accounts</title>
+
+    <meta name="google-site-verification" content="OiSTISzSse5ArBqJvd48x1rYy-K5pb01dhPIppy_ozk" />
+
+
+    <!-- ================= SEO ================= -->
+
+<meta
+    name="description"
+    content="ChongzyStore provides Mobile Legends Bang Bang MLBB diamond recharge services and selected MLBB accounts. Fast ordering, secure online payment and direct customer support."
+>
+
+<meta
+    name="keywords"
+    content="ChongzyStore, MLBB diamonds, Mobile Legends diamonds, MLBB recharge, Mobile Legends recharge, MLBB accounts, Mobile Legends accounts"
+>
+
+<meta
+    name="robots"
+    content="index, follow"
+>
+
+<meta
+    name="author"
+    content="ChongzyStore"
+>
+
+<!-- Social Media Preview -->
+
+<meta
+    property="og:title"
+    content="ChongzyStore - MLBB Diamonds & Accounts"
+>
+
+<meta
+    property="og:description"
+    content="Recharge MLBB Diamonds and browse selected Mobile Legends accounts at ChongzyStore."
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:site_name"
+    content="ChongzyStore"
+>
+
+<!-- ================= END SEO ================= -->
+
+
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ChongzyStore
+        </div>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#home" onclick="closeMenu()">
+                Home
+            </a>
+            <a href="{{ url_for('wallet') }}">
+            💰 Wallet
+            </a>
+
+            <a href="#recharge" onclick="closeMenu()">
+                Recharge
+            </a>
+
+            <a href="#accounts" onclick="closeMenu()">
+                Accounts
+            </a>
+
+            <a href="#contact" onclick="closeMenu()">
+                Contact
+            </a>
+
+            {% if session.get("user_id") %}
+
+                <a href="/account" class="nav-button">
+                    My Account
+                </a>
+
+                <a href="/logout">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="/login">
+                    Login
+                </a>
+
+                <a href="/register" class="nav-button">
+                    Register
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to
+                <span>ChongzyStore</span>
+            </h1>
+
+            <p>
+                Your destination for
+                <strong>MLBB Diamond Recharge</strong>
+                and premium
+                <strong>Mobile Legends accounts</strong>.
+                Fast service, simple ordering and direct customer support.
+            </p>
+
+<div class="quick-actions">
+
+    <a
+        href="{{ url_for('add_coins') }}"
+        class="quick-action"
+    >
+
+        <div class="quick-icon">
+            🪙
+        </div>
+
+        <span>
+            Add Coins
+        </span>
+
+    </a>
+
+
+    <a
+        href="#recharge"
+        class="quick-action"
+    >
+
+        <div class="quick-icon">
+            💎
+        </div>
+
+        <span>
+            Recharge
+        </span>
+
+    </a>
+
+
+    <a
+        href="/account"
+        class="quick-action"
+    >
+
+        <div class="quick-icon">
+            🕘
+        </div>
+
+        <span>
+            My Orders
+        </span>
+
+    </a>
+
+
+    <a
+        href="#accounts"
+        class="quick-action"
+    >
+
+        <div class="quick-icon">
+            🎮
+        </div>
+
+        <span>
+            Accounts
+        </span>
+
+    </a>
+
+</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         RECHARGE
+    ========================================================= -->
+
+    <section class="section" id="recharge">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    💎 Diamond Recharge
+                </h2>
+
+                <p>
+                    Select your MLBB region/server and choose a diamond package.
+                </p>
+
+            </div>
+
+
+            <div class="regions">
+
+{% for region in regions %}
+
+    <div class="region-card">
+
+        <!-- =====================================================
+             REGION LOGO + FLAG
+        ====================================================== -->
+
+        <div class="region-icon">
+
+            {% set region_name = region.name|lower %}
+            {% set region_code = region.code|lower %}
+
+            <!-- ADVENTURE LOGO -->
+            {% if "adventure" in region_name or "adventure" in region_code %}
+
+                <img
+                    src="{{ url_for('static', filename='images/mla-logo.png') }}?v=2"
+                    alt="Mobile Legends Adventure"
+                    class="mlbb-logo"
+                >
+
+            <!-- NORMAL MLBB LOGO -->
+            {% else %}
+
+                <img
+                    src="{{ url_for('static', filename='images/mlbb-logo.png') }}?v=2"
+                    alt="Mobile Legends"
+                    class="mlbb-logo"
+                >
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 FLAGS
+            ================================================== -->
+
+            <div class="region-flag">
+
+                <!-- INDIA -->
+                {% if "india" in region_name
+                      or "india" in region_code
+                      or region_code == "in" %}
+                    🇮🇳
+
+                <!-- INDONESIA -->
+                {% elif "indonesia" in region_name
+                      or "indonesia" in region_code
+                      or region_code == "id" %}
+                    🇮🇩
+
+                <!-- MALAYSIA -->
+                {% elif "malaysia" in region_name
+                      or "malaysia" in region_code
+                      or region_code == "my" %}
+                    🇲🇾
+
+                <!-- PHILIPPINES -->
+                {% elif "philippines" in region_name
+                      or "philippines" in region_code
+                      or region_code == "ph" %}
+                    🇵🇭
+
+                <!-- RUSSIA -->
+                {% elif "russia" in region_name
+                      or region_name == "ru"
+                      or "russia" in region_code
+                      or region_code == "ru" %}
+                    🇷🇺
+
+                <!-- TURKEY -->
+                {% elif "turkey" in region_name
+                      or "turkiye" in region_name
+                      or region_name == "tr"
+                      or "turkey" in region_code
+                      or "turkiye" in region_code
+                      or region_code == "tr" %}
+                    🇹🇷
+
+                <!-- UNITED STATES / USA -->
+                {% elif "usa" in region_name
+                      or "united states" in region_name
+                      or "united states" in region_code
+                      or region_name == "us"
+                      or region_code == "us" %}
+                    🇺🇸
+
+                <!-- UNITED KINGDOM -->
+                {% elif "united kingdom" in region_name
+                      or "uk" in region_name
+                      or region_name == "gb"
+                      or region_code == "gb"
+                      or region_code == "uk" %}
+                    🇬🇧
+
+                <!-- CANADA -->
+                {% elif "canada" in region_name
+                      or region_code == "ca" %}
+                    🇨🇦
+
+                <!-- AUSTRALIA -->
+                {% elif "australia" in region_name
+                      or region_code == "au" %}
+                    🇦🇺
+
+                <!-- SINGAPORE -->
+                {% elif "singapore" in region_name
+                      or region_code == "sg" %}
+                    🇸🇬
+
+                <!-- THAILAND -->
+                {% elif "thailand" in region_name
+                      or region_code == "th" %}
+                    🇹🇭
+
+                <!-- MYANMAR -->
+                {% elif "myanmar" in region_name
+                      or region_code == "mm" %}
+                    🇲🇲
+
+                <!-- VIETNAM -->
+                {% elif "vietnam" in region_name
+                      or region_code == "vn" %}
+                    🇻🇳
+
+                <!-- BANGLADESH -->
+                {% elif "bangladesh" in region_name
+                      or region_code == "bd" %}
+                    🇧🇩
+
+                <!-- BRAZIL -->
+                {% elif "brazil" in region_name
+                      or region_code == "br" %}
+                    🇧🇷
+
+                <!-- JAPAN -->
+                {% elif "japan" in region_name
+                      or region_code == "jp" %}
+                    🇯🇵
+
+                <!-- SOUTH KOREA -->
+                {% elif "south korea" in region_name
+                      or "korea" in region_name
+                      or region_code == "kr" %}
+                    🇰🇷
+
+                <!-- CHINA -->
+                {% elif "china" in region_name
+                      or region_code == "cn" %}
+                    🇨🇳
+
+                <!-- TAIWAN -->
+                {% elif "taiwan" in region_name
+                      or region_code == "tw" %}
+                    🇹🇼
+
+                <!-- MEXICO -->
+                {% elif "mexico" in region_name
+                      or region_code == "mx" %}
+                    🇲🇽
+
+                <!-- NEPAL -->
+                {% elif "nepal" in region_name
+                      or region_code == "np" %}
+                    🇳🇵
+
+                <!-- SRI LANKA -->
+                {% elif "sri lanka" in region_name
+                      or region_code == "lk" %}
+                    🇱🇰
+
+                <!-- PAKISTAN -->
+                {% elif "pakistan" in region_name
+                      or region_code == "pk" %}
+                    🇵🇰
+
+                <!-- GLOBAL -->
+                {% elif "global" in region_name
+                      or "global" in region_code %}
+                    🌐
+
+                <!-- DEFAULT -->
+                {% else %}
+                    🌍
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             REGION NAME
+        ====================================================== -->
+
+        {% set display_name = region.name %}
+
+        {% if "adventure" in region_name %}
+            {% set display_name = "Adventure" %}
+
+        {% elif region_name == "ru" or "russia" in region_name %}
+            {% set display_name = "Russia" %}
+
+        {% elif region_name == "tr" or "turkey" in region_name or "turkiye" in region_name %}
+            {% set display_name = "Turkey" %}
+
+        {% elif region_name == "us"
+              or "usa" in region_name
+              or "united states" in region_name %}
+            {% set display_name = "USA" %}
+
+        {% endif %}
+
+
+        <h3>
+            {{ display_name }}
+        </h3>
+
+
+        <!-- =====================================================
+             VIEW DIAMONDS
+        ====================================================== -->
+
+        <a
+            href="/recharge/{{ region.id }}"
+            class="region-button"
+        >
+            View Diamonds
+        </a>
+
+    </div>
+
+{% else %}
+
+    <div class="region-card">
+
+        <div class="region-icon">
+
+            <img
+                src="{{ url_for('static', filename='images/mlbb-logo.png') }}"
+                alt="Mobile Legends"
+                class="mlbb-logo"
+            >
+
+            <div class="region-flag">
+                🌍
+            </div>
+
+        </div>
+
+        <h3>
+            No Servers Available
+        </h3>
+
+        <p style="color:#94a3b8;line-height:1.6;">
+            Admin has not added any recharge regions yet.
+        </p>
+
+    </div>
+
+{% endfor %}
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         MLBB ACCOUNTS
+    ========================================================= -->
+
+    <section class="section" id="accounts">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    🎮 MLBB Accounts For Sale
+                </h2>
+
+                <p>
+                    Premium Mobile Legends accounts available directly from ChongzyStore.
+                </p>
+
+            </div>
+
+
+            <div class="accounts">
+
+                {% if accounts %}
+
+                    {% for account in accounts %}
+
+                        <div class="account-card">
+
+                            {% if account.status == "Available" %}
+
+                                <div class="account-badge">
+                                    ● Available
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- ACCOUNT IMAGE -->
+
+                            {% if account.image %}
+
+                                <a
+                                    href="{{ url_for('account_details', account_id=account.id) }}"
+                                    style="display:block;"
+                                >
+
+                                    <img
+                                        src="{{ url_for('static', filename='uploads/' + account.image) }}"
+                                        class="account-image"
+                                        alt="{{ account.title }}"
+                                    >
+
+                                </a>
+
+                            {% else %}
+
+                                <div class="no-image">
+                                    🎮
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- ACCOUNT CONTENT -->
+
+                            <div class="account-content">
+
+                                <h3>
+
+                                    <a
+                                        href="{{ url_for('account_details', account_id=account.id) }}"
+                                    >
+                                        {{ account.title }}
+                                    </a>
+
+                                </h3>
+
+
+                                <!-- ACCOUNT STATS -->
+
+                                <div class="account-stats">
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Rank
+                                        </span>
+
+                                        <strong>
+                                            🏆 {{ account.rank or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Level
+                                        </span>
+
+                                        <strong>
+                                            ⭐ {{ account.level or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Skins
+                                        </span>
+
+                                        <strong>
+                                            👕 {{ account.skins or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="account-stat">
+
+                                        <span>
+                                            Heroes
+                                        </span>
+
+                                        <strong>
+                                            ⚔️ {{ account.heroes or "Not specified" }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- DESCRIPTION -->
+
+                                {% if account.description %}
+
+                                    <div class="account-description">
+                                        {{ account.description }}
+                                    </div>
+
+                                {% endif %}
+
+
+                                <!-- PRICE -->
+
+                                <div class="price-box">
+
+                                    <div>
+
+                                        <div class="price-label">
+                                            Price
+                                        </div>
+
+                                        <div class="price-inr">
+                                            ₹{{ "%.2f"|format(account.price) }}
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="price-usd">
+                                        ${{ "%.2f"|format(account.usd_price) }}
+                                    </div>
+
+                                </div>
+
+
+                                <!-- PURCHASE -->
+
+                                {% if account.status == "Available" %}
+
+                                    <a
+                                        href="https://wa.me/919863060164?text=Hello%20ChongzyStore%2C%20I%20am%20interested%20in%20buying%20the%20MLBB%20account%20%22{{ account.title|urlencode }}%22%20priced%20at%20₹{{ account.price }}"
+                                        target="_blank"
+                                        class="whatsapp"
+                                    >
+                                        💬 Buy This Account
+                                    </a>
+
+                                {% else %}
+
+                                    <div class="sold">
+                                        🔒 SOLD
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                {% else %}
+
+                    <div class="account-card">
+
+                        <div class="no-image">
+                            🎮
+                        </div>
+
+                        <div class="account-content">
+
+                            <h3>
+                                No Accounts Available
+                            </h3>
+
+                            <p style="color:#94a3b8;line-height:1.7;">
+                                New MLBB accounts will appear here
+                                when they are added by the administrator.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section class="section" id="contact">
+
+        <div class="container">
+
+            <div class="contact-box">
+
+                <h2>
+                    📱 Contact ChongzyStore
+                </h2>
+
+                <p>
+                    Need help with a recharge, account purchase,
+                    payment or anything else?
+                    Contact us directly on WhatsApp.
+                </p>
+
+                <a
+                    href="https://wa.me/919863060164"
+                    target="_blank"
+                    class="contact-button"
+                >
+                    💬 Chat on WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+<footer>
+
+    <div style="margin-bottom:12px;">
+        © 2026 ChongzyStore. All rights reserved.
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:18px; flex-wrap:wrap;">
+
+        <a href="{{ url_for('terms') }}"
+           style="color:#94a3b8; text-decoration:none;">
+            Terms & Conditions
+        </a>
+
+        <a href="{{ url_for('privacy') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    Privacy Policy
+</a>
+
+<a href="{{ url_for('refund') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    Refund & Cancellation
+</a>
+
+<a href="{{ url_for('faq') }}"
+   style="color:#94a3b8; text-decoration:none;">
+    FAQ
+</a>
+
+
+
+        <a href="#contact"
+           style="color:#94a3b8; text-decoration:none;">
+            Contact
+        </a>
+
+    </div>
+
+</footer>
+
+<!-- ================================================= -->
+<!-- MOBILE BOTTOM NAVIGATION -->
+<!-- ================================================= -->
+
+<nav class="mobile-bottom-nav">
+
+    <a href="#home" class="active">
+
+        <span>⌂</span>
+        <span>Home</span>
+
+    </a>
+
+
+    <a href="#accounts">
+
+        <span>⌕</span>
+        <span>Search</span>
+
+    </a>
+
+
+    <a href="#contact">
+
+        <span>◉</span>
+        <span>Support</span>
+
+    </a>
+
+
+    {% if session.get("user_id") %}
+
+    <a href="/account">
+
+        <span>♙</span>
+        <span>Account</span>
+
+    </a>
+
+    {% else %}
+
+    <a href="/login">
+
+        <span>↪</span>
+        <span>Login</span>
+
+    </a>
+
+    {% endif %}
+
+</nav>
+
+
+    <!-- =========================================================
+         MOBILE MENU JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("navLinks");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        function closeMenu() {
+
+            const menu = document.getElementById("navLinks");
+
+            menu.classList.remove("active");
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ - ChongzyStore</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}?v=3">
+
+    <style>
+
+        .faq-page {
+            min-height: 100vh;
+            padding: 120px 20px 70px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(37,99,235,.16),
+                    transparent 35%
+                ),
+                #070b14;
+        }
+
+        .faq-container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .faq-header h1 {
+            color: white;
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+
+        .faq-header p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .faq-card {
+            background: rgba(15,23,42,.92);
+            border: 1px solid rgba(148,163,184,.15);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-card summary {
+            cursor: pointer;
+            padding: 22px 25px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            list-style: none;
+            position: relative;
+            padding-right: 50px;
+        }
+
+        .faq-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-card summary::after {
+            content: "+";
+            position: absolute;
+            right: 22px;
+            top: 17px;
+            font-size: 25px;
+            color: #60a5fa;
+        }
+
+        .faq-card[open] summary::after {
+            content: "−";
+        }
+
+        .faq-answer {
+            padding: 0 25px 22px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 15px;
+            border-top: 1px solid rgba(148,163,184,.08);
+        }
+
+        .faq-answer p {
+            margin-bottom: 10px;
+        }
+
+        .faq-contact {
+            text-align: center;
+            margin-top: 45px;
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(37,99,235,.10);
+            border: 1px solid rgba(96,165,250,.20);
+        }
+
+        .faq-contact h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .faq-contact p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 10px;
+            background: #20bf6b;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 22px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 650px) {
+
+            .faq-page {
+                padding: 95px 14px 50px;
+            }
+
+            .faq-header h1 {
+                font-size: 32px;
+            }
+
+            .faq-card summary {
+                padding: 19px 45px 19px 18px;
+                font-size: 15px;
+            }
+
+            .faq-answer {
+                padding: 0 18px 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        ChongzyStore
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                My Account
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('register') }}"
+               class="nav-button">
+                Register
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+<section class="faq-page">
+
+    <div class="faq-container">
+
+
+        <div class="faq-header">
+
+            <h1>Frequently Asked Questions</h1>
+
+            <p>
+                Find answers to common questions about
+                MLBB diamond recharge, payments, orders
+                and account purchases on ChongzyStore.
+            </p>
+
+        </div>
+
+
+        <!-- FAQ 1 -->
+
+        <details class="faq-card">
+
+            <summary>
+                How do I recharge MLBB Diamonds?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Select the region and diamond package you want,
+                    enter your MLBB User ID and Zone ID, provide the
+                    required information and continue to payment.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 2 -->
+
+        <details class="faq-card">
+
+            <summary>
+                What are MLBB User ID and Zone ID?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Your MLBB User ID and Zone ID are the identifiers
+                    associated with your Mobile Legends account.
+                    They must be entered correctly when placing a
+                    recharge order.
+                </p>
+
+                <p>
+                    Always check these details carefully before
+                    completing your order.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 3 -->
+
+        <details class="faq-card">
+
+            <summary>
+                What happens after I place an order?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    After creating an order, you can view its details
+                    from your account. The order will display its
+                    current status and payment information.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 4 -->
+
+        <details class="faq-card">
+
+            <summary>
+                What payment method is available?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Available online payments are processed through
+                    the payment gateway provided during checkout.
+                </p>
+
+                <p>
+                    Follow the payment instructions displayed on
+                    the order page.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 5 -->
+
+        <details class="faq-card">
+
+            <summary>
+                How can I check my order?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Log in to your ChongzyStore account and open
+                    <strong>My Account</strong> to view your orders,
+                    order numbers, diamond packages, amounts and
+                    current order status.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 6 -->
+
+        <details class="faq-card">
+
+            <summary>
+                Can I cancel a diamond recharge order?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Cancellation may not be possible once a digital
+                    recharge has already been successfully processed.
+                </p>
+
+                <p>
+                    If you have a problem with an order, contact
+                    ChongzyStore as soon as possible.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 7 -->
+
+        <details class="faq-card">
+
+            <summary>
+                What if I entered the wrong MLBB User ID or Zone ID?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Contact ChongzyStore as soon as possible with
+                    your order information.
+                </p>
+
+                <p>
+                    Customers are responsible for checking their
+                    MLBB information before submitting an order.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 8 -->
+
+        <details class="faq-card">
+
+            <summary>
+                How do I buy an MLBB account?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Browse the available MLBB accounts on the
+                    ChongzyStore homepage.
+                </p>
+
+                <p>
+                    Select an account you are interested in and use
+                    the provided contact option to discuss the
+                    purchase directly with ChongzyStore.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 9 -->
+
+        <details class="faq-card">
+
+            <summary>
+                Can I see the details of an MLBB account before buying?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Yes. Available account listings may include
+                    information such as rank, level, skins, heroes,
+                    description, price and screenshots.
+                </p>
+
+                <p>
+                    Review the available information carefully before
+                    completing a purchase.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 10 -->
+
+        <details class="faq-card">
+
+            <summary>
+                How do I contact ChongzyStore?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    You can contact ChongzyStore directly through
+                    the WhatsApp contact option available on the
+                    website.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 11 -->
+
+        <details class="faq-card">
+
+            <summary>
+                What if my payment was successful but my order has a problem?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    Keep your order number and payment information
+                    and contact ChongzyStore with the details of
+                    the issue.
+                </p>
+
+                <p>
+                    The order can then be reviewed and an appropriate
+                    resolution can be considered.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <!-- FAQ 12 -->
+
+        <details class="faq-card">
+
+            <summary>
+                Is my account information protected?
+            </summary>
+
+            <div class="faq-answer">
+
+                <p>
+                    ChongzyStore takes reasonable measures to protect
+                    customer information and uses account sessions
+                    and password protection for customer accounts.
+                </p>
+
+                <p>
+                    Customers should also keep their passwords private
+                    and secure.
+                </p>
+
+            </div>
+
+        </details>
+
+
+        <div class="faq-contact">
+
+            <h2>Still Need Help?</h2>
+
+            <p>
+                Our support team can help you with orders,
+                recharge questions and account inquiries.
+            </p>
+
+            <a
+                href="https://wa.me/919863060164"
+                target="_blank"
+                class="whatsapp-button">
+
+                💬 Contact on WhatsApp
+
+            </a>
+
+            <br>
+
+            <a href="{{ url_for('home') }}"
+               class="back-button">
+
+                ← Back to ChongzyStore
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</body>
+
+</html>

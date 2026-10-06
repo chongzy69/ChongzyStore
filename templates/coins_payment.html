@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Coin Payment - ChongzyStore</title>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(245,197,66,0.12),
+                    transparent 35%
+                ),
+                #050505;
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 520px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #090909
+                );
+
+            border: 1px solid rgba(245,197,66,0.25);
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.6);
+
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #f5c542;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .coin-card {
+
+            padding: 30px 20px;
+
+            border-radius: 18px;
+
+            background: #0d0d0d;
+
+            border:
+                1px solid
+                rgba(245,197,66,0.18);
+
+            margin-bottom: 25px;
+        }
+
+        .coin-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .coins {
+            color: #f5c542;
+
+            font-size: 42px;
+
+            font-weight: 900;
+        }
+
+        .coin-text {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .price {
+
+            margin-top: 20px;
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+            color: white;
+        }
+
+        .pay-button {
+
+            width: 100%;
+
+            min-height: 55px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5c542,
+                    #d9a900
+                );
+
+            color: #111;
+
+            font-size: 16px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .pay-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(245,197,66,0.20);
+        }
+
+        .back {
+
+            display: block;
+
+            margin-top: 20px;
+
+            color: #888;
+
+            text-decoration: none;
+        }
+
+        .back:hover {
+            color: #f5c542;
+        }
+
+        .secure {
+
+            margin-top: 20px;
+
+            color: #555;
+
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+    <div class="logo">
+        ChongzyStore
+    </div>
+
+
+    <div class="subtitle">
+        Secure Coin Wallet Payment
+    </div>
+
+
+    <div class="coin-card">
+
+
+        <div class="coin-icon">
+            🪙
+        </div>
+
+
+        <div class="coins">
+            {{ transaction.coins }}
+        </div>
+
+
+        <div class="coin-text">
+            Coins
+        </div>
+
+
+        <div class="price">
+            ₹{{ "%.2f"|format(transaction.amount) }}
+        </div>
+
+
+    </div>
+
+
+    {% if transaction.razorpay_order_id and razorpay_key_id %}
+
+        <button
+            type="button"
+            id="payButton"
+            class="pay-button"
+        >
+            💳 Pay ₹{{ "%.2f"|format(transaction.amount) }}
+        </button>
+
+    {% else %}
+
+        <div style="
+            padding:15px;
+            background:rgba(239,68,68,0.08);
+            border:1px solid rgba(239,68,68,0.25);
+            border-radius:12px;
+            color:#f87171;
+        ">
+            Payment is currently unavailable.
+            Please try again.
+        </div>
+
+    {% endif %}
+
+
+    <a
+        href="{{ url_for('add_coins') }}"
+        class="back"
+    >
+        ← Back to Add Coins
+    </a>
+
+
+    <div class="secure">
+        🔒 Secure payment powered by Razorpay
+    </div>
+
+
+</div>
+
+
+{% if transaction.razorpay_order_id and razorpay_key_id %}
+
+<script>
+
+document
+    .getElementById("payButton")
+    .addEventListener(
+        "click",
+        function() {
+
+
+            const options = {
+
+
+                key:
+                    "{{ razorpay_key_id }}",
+
+
+                amount:
+                    {{ (transaction.amount * 100)|int }},
+
+
+                currency:
+                    "INR",
+
+
+                name:
+                    "ChongzyStore",
+
+
+                description:
+                    "{{ transaction.coins }} Coins",
+
+
+                order_id:
+                    "{{ transaction.razorpay_order_id }}",
+
+
+                prefill: {
+
+                    name:
+                        "{{ user.name }}",
+
+                    email:
+                        "{{ user.email }}",
+
+                    contact:
+                        "{{ user.phone }}"
+
+                },
+
+
+                theme: {
+
+                    color:
+                        "#f5c542"
+
+                },
+
+
+                handler:
+                    function(response) {
+
+
+                        const form =
+                            document.createElement("form");
+
+
+                        form.method =
+                            "POST";
+
+
+                        form.action =
+                            "{{ url_for('coin_payment_success') }}";
+
+
+                        const fields = {
+
+                            razorpay_payment_id:
+                                response.razorpay_payment_id,
+
+                            razorpay_order_id:
+                                response.razorpay_order_id,
+
+                            razorpay_signature:
+                                response.razorpay_signature,
+
+                            transaction_id:
+                                "{{ transaction.id }}"
+
+                        };
+
+
+                        for (
+                            const key in fields
+                        ) {
+
+
+                            const input =
+                                document.createElement("input");
+
+
+                            input.type =
+                                "hidden";
+
+
+                            input.name =
+                                key;
+
+
+                            input.value =
+                                fields[key];
+
+
+                            form.appendChild(input);
+
+                        }
+
+
+                        document.body.appendChild(form);
+
+
+                        form.submit();
+
+                    },
+
+
+                modal: {
+
+                    ondismiss:
+                        function() {
+
+                            console.log(
+                                "Coin payment window closed."
+                            );
+
+                        }
+
+                }
+
+            };
+
+
+            const razorpay =
+                new Razorpay(options);
+
+
+            razorpay.open();
+
+        }
+
+    );
+
+</script>
+
+{% endif %}
+
+
+</body>
+
+</html>

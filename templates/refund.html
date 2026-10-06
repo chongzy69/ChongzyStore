@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Refund & Cancellation Policy - ChongzyStore</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}?v=3">
+
+    <style>
+        .legal-page {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at top right,
+                rgba(37,99,235,.16),
+                transparent 35%),
+                #070b14;
+        }
+
+        .legal-container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .legal-card {
+            background: rgba(15,23,42,.92);
+            border: 1px solid rgba(148,163,184,.15);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.35);
+        }
+
+        .legal-card h1 {
+            color: white;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .updated {
+            color: #94a3b8;
+            margin-bottom: 35px;
+        }
+
+        .legal-card h2 {
+            color: #60a5fa;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .legal-card p,
+        .legal-card li {
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .legal-card ul {
+            padding-left: 22px;
+        }
+
+        .notice {
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 12px;
+            background: rgba(37,99,235,.10);
+            border: 1px solid rgba(96,165,250,.20);
+            color: #dbeafe;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-button:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 650px) {
+            .legal-page {
+                padding: 95px 14px 40px;
+            }
+
+            .legal-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            .legal-card h1 {
+                font-size: 30px;
+            }
+
+            .legal-card h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        ChongzyStore
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="{{ url_for('customer_dashboard') }}">
+                My Account
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('register') }}"
+               class="nav-button">
+                Register
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+<section class="legal-page">
+
+    <div class="legal-container">
+
+        <div class="legal-card">
+
+            <h1>Refund & Cancellation Policy</h1>
+
+            <p class="updated">
+                Last updated: 2026
+            </p>
+
+
+            <p>
+                This Refund & Cancellation Policy explains how
+                cancellations and refund requests are handled for
+                services purchased through ChongzyStore.
+            </p>
+
+
+            <div class="notice">
+                Please check your order details carefully before
+                completing a payment, especially your MLBB User ID,
+                Zone ID and selected diamond package.
+            </div>
+
+
+            <h2>1. Diamond Recharge Orders</h2>
+
+            <p>
+                Customers are responsible for providing the correct
+                MLBB User ID, Zone ID and other required information
+                when placing a recharge order.
+            </p>
+
+            <p>
+                Once a recharge has been successfully processed,
+                cancellation or refund may not be possible because
+                the digital service may already have been delivered.
+            </p>
+
+
+            <h2>2. Incorrect MLBB Information</h2>
+
+            <p>
+                If incorrect information is provided by the customer,
+                such as an incorrect User ID or Zone ID, ChongzyStore
+                may not be responsible for the resulting issue.
+            </p>
+
+            <p>
+                Customers should carefully verify all information
+                before submitting an order.
+            </p>
+
+
+            <h2>3. Failed or Unsuccessful Recharge</h2>
+
+            <p>
+                If payment has been successfully completed but the
+                requested recharge cannot be delivered because of a
+                technical or service-related problem, the customer
+                should contact ChongzyStore with the relevant order
+                details.
+            </p>
+
+            <p>
+                The issue will be reviewed and an appropriate
+                resolution may be provided depending on the
+                circumstances.
+            </p>
+
+
+            <h2>4. Pending Payments</h2>
+
+            <p>
+                If an order remains pending because payment was not
+                successfully completed or verified, the customer
+                should not make repeated payments without first
+                checking the existing order status.
+            </p>
+
+
+            <h2>5. Duplicate Payments</h2>
+
+            <p>
+                If a customer believes that the same order was paid
+                more than once, they should contact ChongzyStore
+                and provide the relevant transaction information.
+            </p>
+
+            <p>
+                Duplicate payment claims will be reviewed before any
+                applicable resolution is provided.
+            </p>
+
+
+            <h2>6. MLBB Account Purchases</h2>
+
+            <p>
+                MLBB account purchases are handled directly through
+                communication with ChongzyStore.
+            </p>
+
+            <p>
+                Customers should review the account information,
+                screenshots, price and other available details before
+                completing an account purchase.
+            </p>
+
+
+            <h2>7. Account Purchase Cancellation</h2>
+
+            <p>
+                Once an MLBB account transaction has been completed
+                and the account has been transferred or delivered,
+                cancellation or refund may not be available except
+                where ChongzyStore agrees otherwise.
+            </p>
+
+
+            <h2>8. Refund Requests</h2>
+
+            <p>
+                Refund requests should include sufficient information
+                for ChongzyStore to identify and review the order.
+            </p>
+
+            <ul>
+                <li>Order number</li>
+                <li>Customer name</li>
+                <li>Payment information or transaction reference</li>
+                <li>Description of the issue</li>
+                <li>Relevant screenshots when necessary</li>
+            </ul>
+
+
+            <h2>9. Fraudulent Transactions</h2>
+
+            <p>
+                Refund requests associated with fraudulent activity,
+                unauthorized transactions, false claims or payment
+                abuse may be rejected and may result in account
+                restrictions.
+            </p>
+
+
+            <h2>10. Processing Time</h2>
+
+            <p>
+                If a refund is approved, the actual time required for
+                the funds to appear may depend on the payment provider
+                or financial institution used for the transaction.
+            </p>
+
+
+            <h2>11. Policy Changes</h2>
+
+            <p>
+                ChongzyStore may update this Refund & Cancellation
+                Policy when necessary. The latest version will be
+                published on this page.
+            </p>
+
+
+            <h2>12. Contact Us</h2>
+
+            <p>
+                For refund, cancellation or payment-related questions,
+                please contact ChongzyStore using the contact method
+                provided on the website.
+            </p>
+
+
+            <a href="{{ url_for('home') }}"
+               class="back-button">
+                ← Back to ChongzyStore
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

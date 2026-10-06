@@ -1,0 +1,19 @@
+{% if account.status == "Sold" %}
+
+<a
+    href="{{ url_for('restore_account', account_id=account.id) }}"
+    style="
+        display:inline-block;
+        padding:9px 14px;
+        border-radius:8px;
+        background:#16a34a;
+        color:white;
+        text-decoration:none;
+        font-weight:700;
+        margin:3px;
+    "
+>
+    🔓 Restore
+</a>
+
+{% endif %}
