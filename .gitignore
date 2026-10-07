@@ -1,16 +1,31 @@
-__pycache__/
-*.pyc
-.env
-.venv/
-venv/
-# Local database
-instance/
-*.db
-static/uploads/
-.env
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
 
 # Environment secrets
 .env
+.env.*
+
+# Local database
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded user files
+static/uploads/
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
